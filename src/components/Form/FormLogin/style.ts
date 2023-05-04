@@ -1,5 +1,5 @@
 import styled from "styled-components";
-export const StyledForm = styled.form`
+export const StyledFormLogin = styled.form`
   display: flex;
   flex-direction: column;
   gap: 25px;
@@ -28,6 +28,7 @@ export const StyledForm = styled.form`
     align-self: center;
     max-width: 327px;
     width: 100%;
+
     color: var(--color-gray-50);
   }
 

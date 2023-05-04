@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Button } from "../../Button";
 import { Input } from "../../Input";
-import { StyledForm } from "../style";
+import { StyledFormLogin } from "./style";
 import { loginSchema } from "./loginSchema";
 import { useContext } from "react";
 import { UserContext } from "../../../context/UserContext";
@@ -24,13 +24,13 @@ export const FormLogin = () => {
   });
 
   return (
-    <StyledForm onSubmit={handleSubmit(loginSubmit)} noValidate>
+    <StyledFormLogin onSubmit={handleSubmit(loginSubmit)} noValidate>
       <h3 className="font-heading-3">Login</h3>
       <Input
         type="text"
-        name="Email"
-        register={register("email")}
-        error={errors.email?.message}
+        name="Username"
+        register={register("username")}
+        error={errors.username?.message}
       />
 
       <Input
@@ -54,6 +54,6 @@ export const FormLogin = () => {
       <Link to={"/register"}>
         <Button content="Cadastrar" size="default" color="gray" />
       </Link>
-    </StyledForm>
+    </StyledFormLogin>
   );
 };

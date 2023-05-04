@@ -13,12 +13,12 @@ export const UserProvider = ({ children }: i.UserProvider) => {
 
   const loginSubmit = async (data: i.DataLogin) => {
     const response = await loginUser(data);
-    const { user, accessToken } = response;
+    // const { user, access } = response;
 
     if (response) {
-      localStorage.setItem("@TOKEN", accessToken);
-      localStorage.setItem("@USER", JSON.stringify(user));
-      setUserInfo(user);
+      localStorage.setItem("@TOKEN", response.access);
+      // localStorage.setItem("@USER", JSON.stringify(user));
+      // setUserInfo(user);
 
       setTimeout(() => {
         navigate("/dashboard");
@@ -29,11 +29,22 @@ export const UserProvider = ({ children }: i.UserProvider) => {
   };
 
   const registerSubmit = async (data: i.DataRegister) => {
-    console.log(data);
+    // console.log(data);
     const body = {
-      name: data.name,
+      username: data.username,
+      first_name: data.first_name,
+      last_name: data.last_name,
       email: data.email,
       password: data.password,
+      img: data.img,
+      address: {
+        street: data.address.street,
+        number: data.address.number,
+        add_on: data.address.add_on,
+        city: data.address.city,
+        state: data.address.state,
+        zipcode: data.address.zipcode,
+      },
     };
 
     const response = await createUser(body);

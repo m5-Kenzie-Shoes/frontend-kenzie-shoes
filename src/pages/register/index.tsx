@@ -6,12 +6,12 @@ import { AnimSlideLeft, AnimSlideRight } from "../../animation";
 export const RegisterPage = () => {
   return (
     <StyledRegister>
-      <AnimSlideRight>
+      {/* <AnimSlideRight>
         <Preface />
-      </AnimSlideRight>
-      <AnimSlideLeft>
-        <FormRegister />
-      </AnimSlideLeft>
+      </AnimSlideRight> */}
+      {/* <AnimSlideLeft> */}
+      <FormRegister />
+      {/* </AnimSlideLeft> */}
     </StyledRegister>
   );
 };
