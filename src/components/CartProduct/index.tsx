@@ -6,7 +6,7 @@ import * as i from "../../interfaces/ProductsInterfaces";
 
 export const CartProduct = ({ cartItem }: i.CartList) => {
   const { cartList, setCartList } = useContext(ProductsContext);
-  const { id, name, img, quantity } = cartItem;
+  const { id, name, image_product, quantity } = cartItem;
 
   const removeItem = () => {
     const updatedList = cartList.filter((item) => item.id != cartItem.id);
@@ -37,15 +37,8 @@ export const CartProduct = ({ cartItem }: i.CartList) => {
     <StyledCartProduct>
       <div>
         <img
-          src={img}
+          src={image_product}
           alt={name}
-          className={
-            name.includes("Coca") || name.includes("Guaraná")
-              ? "resize-img-cart"
-              : name.includes("Ovomaltine")
-              ? "adjust-img-cart"
-              : ""
-          }
         />
       </div>
       <div>

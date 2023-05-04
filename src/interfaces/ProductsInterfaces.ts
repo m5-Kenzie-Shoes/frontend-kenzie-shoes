@@ -5,9 +5,18 @@ export interface ProductsProvider {
 export interface Products {
   id: number;
   name: string;
-  category: "Sanduíches" | "Bebidas";
-  price: number;
-  img: string;
+  category:
+    | "Botas"
+    | "Chinelos e Sandálias"
+    | "Chuteiras"
+    | "Sapatênis"
+    | "Tênis"
+    | "Tênis de corrida";
+  description: string;
+  image_product: string;
+  quantities: number;
+  user: number;
+  value: number;
 }
 
 export interface ProductList {
@@ -21,9 +30,8 @@ export interface ProductArrayList {
 export interface CartItem {
   id: number;
   name: string;
-  category: "Sanduíches" | "Bebidas";
-  price: number;
-  img: string;
+  value: number;
+  image_product: string;
   quantity: number;
 }
 

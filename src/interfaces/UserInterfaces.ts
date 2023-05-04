@@ -25,13 +25,26 @@ export interface UserContext {
 }
 
 export interface DataLogin {
-  email: string;
+  username: string;
   password: string;
 }
 
+interface DataAddress {
+  street: string;
+  number: number;
+  add_on?: string;
+  city: string;
+  state: string;
+  zipcode: string;
+}
+
 export interface DataRegister {
+  username: string;
+  first_name: string;
+  last_name: string;
   email: string;
-  name: string;
   password: string;
   rePassword?: string;
+  img: string;
+  address: DataAddress;
 }

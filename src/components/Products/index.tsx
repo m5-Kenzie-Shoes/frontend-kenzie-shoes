@@ -7,8 +7,9 @@ import * as i from "../../interfaces/ProductsInterfaces";
 
 export const Products = ({ products }: i.ProductList) => {
   const { cartList, setCartList } = useContext(ProductsContext);
-  const { id, name, img, category, price } = products;
-  const formatedPrice = price.toLocaleString("pt-br", {
+  const { id, name, image_product, category, description, user, value } =
+    products;
+  const formattedPrice = value.toLocaleString("pt-br", {
     style: "currency",
     currency: "BRL",
   });
@@ -18,9 +19,11 @@ export const Products = ({ products }: i.ProductList) => {
     const newProduct = {
       id: id,
       name: name,
-      img: img,
+      image_product: image_product,
       category: category,
-      price: price,
+      value: value,
+      user: user,
+      description: description,
       quantity: 1,
     };
 
@@ -35,22 +38,13 @@ export const Products = ({ products }: i.ProductList) => {
   return (
     <StyledProducts>
       <div>
-        <img
-          src={img}
-          alt={name}
-          className={
-            name.includes("Coca") || name.includes("Guaraná")
-              ? "resize-img"
-              : name.includes("Ovomaltine")
-              ? "adjust-img"
-              : ""
-          }
-        />
+        <img src={image_product} alt={name} />
       </div>
       <div>
         <h3 className="font-heading-3">{name}</h3>
         <span className="caption">{category}</span>
-        <h4 className="font-body-600">{formatedPrice}</h4>
+        <p>{description}</p>
+        <h4 className="font-body-600">{formattedPrice}</h4>
         <Button
           size="medium"
           color="primary"

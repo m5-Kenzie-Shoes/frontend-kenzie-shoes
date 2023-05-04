@@ -38,7 +38,7 @@ export const ProductsProvider = ({ children }: i.ProductsProvider) => {
       } else {
         localStorage.clear();
         navigate("/");
-        toast.error("Token inválido!");
+        // toast.error("Token inválido!");
       }
       setLoadUser(false);
     };
