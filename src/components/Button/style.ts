@@ -14,7 +14,7 @@ const buttonVariants = {
 
   medium: css`
     height: 2.5rem;
-    font-size: var(--font-size-5);
+    font-size: var(--font-size-6);
     width: fit-content;
   `,
 

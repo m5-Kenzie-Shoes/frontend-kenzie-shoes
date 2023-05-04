@@ -37,8 +37,8 @@ export const StyledCartProduct = styled.li`
     gap: 0.625rem;
     text-align: left;
     align-items: center;
-    justify-content: space-between;
-    /* background-color: red; */
+    justify-content: space-evenly;
+
     > div {
       display: flex;
       justify-content: space-between;
@@ -73,7 +73,7 @@ export const StyledCartProduct = styled.li`
 
   > button {
     position: absolute;
-    bottom: 0.1rem;
+    bottom: 0.625rem;
     right: 0.625rem;
     background: none;
     border: none;

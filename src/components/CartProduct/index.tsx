@@ -36,10 +36,7 @@ export const CartProduct = ({ cartItem }: i.CartList) => {
   return (
     <StyledCartProduct>
       <div>
-        <img
-          src={image_product}
-          alt={name}
-        />
+        <img src={image_product} alt={name} />
       </div>
       <div>
         <h4 className="font-heading-4">{name}</h4>
@@ -49,7 +46,6 @@ export const CartProduct = ({ cartItem }: i.CartList) => {
           <button onClick={() => addItem()}>+</button>
         </div>
       </div>
-
       <button className="caption" onClick={() => removeItem()}>
         <FaTrash size={20} color={"var(--color-gray-50)"} />
       </button>

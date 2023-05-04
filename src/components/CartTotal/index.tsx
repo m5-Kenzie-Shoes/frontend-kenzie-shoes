@@ -19,18 +19,30 @@ export const CartTotal = () => {
     setShowCart(false);
   };
 
+  const fechaPedido = () => {
+    alert("PEDIDO FINALIZADO COM SUCESSO");
+  };
+
   return (
     <StyledCartTotal>
       <div>
         <h3 className="font-heading-4">Total</h3>
         <span className="font-body-600-gray">{formattedTotal}</span>
       </div>
-      <Button
-        size="default"
-        color="gray"
-        content="Remover Todos"
-        onClick={() => cleanCart()}
-      />
+      <div>
+        <Button
+          size="medium"
+          color="gray"
+          content="Remover Todos"
+          onClick={() => cleanCart()}
+        />
+        <Button
+          size="medium"
+          onClick={() => fechaPedido()}
+          content="Finalizar Pedido"
+          color={"primary"}
+        />
+      </div>
     </StyledCartTotal>
   );
 };
