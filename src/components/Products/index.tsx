@@ -41,16 +41,20 @@ export const Products = ({ products }: i.ProductList) => {
         <img src={image_product} alt={name} />
       </div>
       <div>
-        <h3 className="font-heading-3">{name}</h3>
-        <span className="caption">{category}</span>
-        <p>{description}</p>
-        <h4 className="font-body-600">{formattedPrice}</h4>
-        <Button
-          size="medium"
-          color="primary"
-          content="Adicionar"
-          onClick={() => addProduct()}
-        />
+        <div>
+          <h3 className="font-heading-3">{name}</h3>
+          <span className="caption">{category}</span>
+          <p>{description}</p>
+        </div>
+        <div>
+          <h4 className="font-body-600">{"R$ " + formattedPrice}</h4>
+          <Button
+            size="medium"
+            color="primary"
+            content="Adicionar"
+            onClick={() => addProduct()}
+          />
+        </div>
       </div>
     </StyledProducts>
   );

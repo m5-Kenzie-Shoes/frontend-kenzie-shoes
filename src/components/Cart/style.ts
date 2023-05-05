@@ -15,7 +15,6 @@ export const StyledCart = styled.aside`
       height: 4.0625rem;
       background-color: var(--color-primary);
       border-radius: var(--border-radius-2) var(--border-radius-2) 0 0;
-
       h4 {
         color: var(--color-white);
       }
