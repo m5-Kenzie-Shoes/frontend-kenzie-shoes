@@ -1,4 +1,4 @@
-import logo from "../../images/logo.svg";
+import logo from "../../images/logo.png";
 import { useContext } from "react";
 import { ProductsContext } from "../../context/ProductsContext";
 import { InputSearch } from "../InputSearch";
@@ -14,7 +14,7 @@ export const Header = () => {
   return (
     <StyledHeader>
       <div className="container">
-        <img src={logo} alt="logomarca Burguer Kenzie" />
+        <img className="newLogo" src={logo} alt="logomarca Burguer Kenzie" />
         <div>
           <InputSearch />
           <div>

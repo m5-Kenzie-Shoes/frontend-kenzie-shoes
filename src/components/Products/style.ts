@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 export const StyledProducts = styled.li`
-  min-width: 17rem;
-  width: 17rem;
+  min-width: 16rem;
+  width: 16rem;
   background-color: var(--color-white);
   border: 0.125rem solid var(--color-gray-20);
   border-radius: var(--border-radius-2);
@@ -41,9 +41,9 @@ export const StyledProducts = styled.li`
       flex-direction: column;
       align-items: flex-start;
       gap: 0.5rem;
-      width: 100%;
+      max-width: 200px;
+      min-width: 200px;
       height: 90px;
-      /* background-color: red; */
       > p {
         font-size: 0.75rem;
       }
@@ -54,6 +54,8 @@ export const StyledProducts = styled.li`
       margin-top: 1rem;
       justify-content: space-between;
       align-items: center;
+      min-width: 200px;
+      max-width: 200px;
     }
   }
 

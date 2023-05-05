@@ -9,7 +9,7 @@ export const AnimSlideLeft = ({ children, delay = 0 }: iAnimations) => (
   <motion.div
     initial={{ translateX: "100vw" }}
     animate={{ translateX: 0 }}
-    transition={{ duration: 1.2, delay: delay, ease: "easeIn" }}
+    transition={{ duration: 1, delay: delay, ease: "easeIn" }}
   >
     {children}
   </motion.div>
@@ -19,7 +19,7 @@ export const AnimSlideRight = ({ children, delay = 0 }: iAnimations) => (
   <motion.div
     initial={{ translateX: "-100vw" }}
     animate={{ translateX: 0 }}
-    transition={{ duration: 1.2, delay: delay, ease: "easeIn" }}
+    transition={{ duration: 1, delay: delay, ease: "easeIn" }}
   >
     {children}
   </motion.div>

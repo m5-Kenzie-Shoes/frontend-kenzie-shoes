@@ -1,15 +1,14 @@
 import styled from "styled-components";
 export const StyledFormRegister = styled.form`
   display: flex;
-  gap: 50px;
+  gap: 20px;
   > div {
     > div {
       display: flex;
       flex-direction: column;
       gap: 25px;
       padding: 26px 24px;
-
-      width: 500px;
+      width: 400px;
       border: 2px solid var(--color-gray-20);
       box-shadow: 0px 0px 30px -20px rgba(0, 0, 0, 0.25);
       border-radius: var(--border-radius-2);
