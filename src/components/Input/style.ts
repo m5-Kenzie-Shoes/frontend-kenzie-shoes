@@ -16,7 +16,7 @@ export const StyledInput = styled.fieldset`
     padding: 17px 15px;
     border: none;
     outline: none;
-    border: 2px solid var(--color-gray-20);
+    border: 2px solid var(--color-gray-30);
     border-radius: var(--border-radius-1);
     transition: 0.4s ease;
 
@@ -42,6 +42,7 @@ export const StyledInput = styled.fieldset`
     position: absolute;
     right: 20px;
     top: 20px;
+    height: 300px;
     color: var(--color-gray-50);
     :hover {
       cursor: pointer;
@@ -51,7 +52,7 @@ export const StyledInput = styled.fieldset`
   > span {
     color: var(--color-gray-50);
     pointer-events: none;
-    font-size: 1.1rem;
+    font-size: 0.9rem;
     position: absolute;
     left: 0;
     padding: 18px;

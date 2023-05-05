@@ -9,6 +9,10 @@ export const StyledPreface = styled.section`
   gap: 30px;
   align-items: flex-start;
 
+  img {
+    height: 270px;
+  }
+
   div {
     width: 100%;
     border: 1px solid var(--color-gray-20);

@@ -12,6 +12,11 @@ export const StyledHeader = styled.header`
   top: 0;
   width: 100%;
 
+  .newLogo {
+    width: 190px;
+    margin-top: 80px;
+  }
+
   > div {
     display: flex;
     justify-content: space-between;
