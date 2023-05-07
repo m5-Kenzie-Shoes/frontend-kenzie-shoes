@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const StyledHeader = styled.header`
   background-color: var(--color-gray-0);
-  height: 5rem;
+  height: 6rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -14,7 +14,7 @@ export const StyledHeader = styled.header`
 
   .newLogo {
     width: 190px;
-    margin-top: 80px;
+    margin-top: 50px;
   }
 
   > div {

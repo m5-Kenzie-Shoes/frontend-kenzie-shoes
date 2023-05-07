@@ -6,16 +6,29 @@ import { StyledHeader } from "./style";
 import { FaShoppingCart } from "react-icons/fa";
 import { TbLogout } from "react-icons/tb";
 import { UserContext } from "../../context/UserContext";
+import { Button } from "../Button";
+import { transformToSeller } from "../../services/api";
 
 export const Header = () => {
-  const { logout } = useContext(UserContext);
+  const { logout, userId } = useContext(UserContext);
   const { cartList, showCart, setShowCart } = useContext(ProductsContext);
+
+  const userSell = async () => {
+    await transformToSeller(userId!);
+  };
 
   return (
     <StyledHeader>
       <div className="container">
         <img className="newLogo" src={logo} alt="logomarca Burguer Kenzie" />
         <div>
+          {/* <img src={vender} alt="venda aqui" /> */}
+          <Button
+            onClick={() => userSell()}
+            size="medium"
+            color="gray"
+            content={"VENDA AQUI"}
+          />
           <InputSearch />
           <div>
             <div>

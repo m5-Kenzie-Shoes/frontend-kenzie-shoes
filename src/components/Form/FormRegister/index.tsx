@@ -80,7 +80,7 @@ export const FormRegister = () => {
         <div>
           <div>
             <h3 className="font-heading-3">Endereço</h3>
-            <Link to={"/"}>
+            <Link to={"/login"}>
               <span className="font-body">Retornar para o login</span>
             </Link>
           </div>

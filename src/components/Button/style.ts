@@ -35,9 +35,9 @@ const buttonVariants = {
     border: 0.125rem solid var(--color-gray-20);
 
     :hover {
-      color: var(--color-gray-20);
-      background-color: var(--color-gray-50);
-      border: 0.125rem solid var(--color-gray-50);
+      /* color: var(--color-gray-20); */
+      /* background-color: var(--color-gray-50); */
+      border: 0.125rem solid var(--color-primary);
     }
   `,
 
