@@ -80,9 +80,12 @@ export const StyledHeader = styled.header`
 
   @media only screen and (max-width: 37.5rem) {
     height: auto;
+    .newLogo {
+      margin: 0;
+    }
 
     > div {
-      margin-top: 1.5625rem;
+      margin-top: 1rem;
       width: 100%;
       align-items: center;
       flex-direction: column;
@@ -90,11 +93,17 @@ export const StyledHeader = styled.header`
       img {
         padding-left: 12px;
         align-self: flex-start;
+        z-index: 1;
       }
 
       > div {
         display: flex;
         flex-direction: column-reverse;
+        /* background-color: red; */
+        position: absolute;
+        top: 85px;
+        right: 0;
+        z-index: 0;
 
         form {
           padding: 0;
@@ -107,8 +116,8 @@ export const StyledHeader = styled.header`
         > div {
           display: flex;
           position: absolute;
-          right: 10px;
-          top: 20px;
+          right: 20px;
+          top: -45px;
         }
       }
     }

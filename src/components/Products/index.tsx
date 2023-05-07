@@ -4,17 +4,19 @@ import { Button } from "../Button";
 import { useContext } from "react";
 import { ProductsContext } from "../../context/ProductsContext";
 import * as i from "../../interfaces/ProductsInterfaces";
+import { fillCart } from "../../services/api";
 
 export const Products = ({ products }: i.ProductList) => {
   const { cartList, setCartList } = useContext(ProductsContext);
-  const { id, name, image_product, category, description, user, value } =
+  const { id, name, image_product, category, description, user, stock, value } =
     products;
+
   const formattedPrice = value.toLocaleString("pt-br", {
     style: "currency",
     currency: "BRL",
   });
 
-  const addProduct = () => {
+  const addProduct = async () => {
     const duplicatedItem = cartList.some((item) => item.id === products.id);
     const newProduct = {
       id: id,
@@ -25,10 +27,13 @@ export const Products = ({ products }: i.ProductList) => {
       user: user,
       description: description,
       quantity: 1,
+      stock: stock,
     };
 
     if (!duplicatedItem) {
       setCartList([...cartList, newProduct]);
+      console.log(id);
+      await fillCart(id);
       toast.success("Enviado para o carrinho!");
     } else {
       toast.error("Produto já está no carrinho!");
@@ -47,11 +52,14 @@ export const Products = ({ products }: i.ProductList) => {
           <p>{description}</p>
         </div>
         <div>
-          <h4 className="font-body-600">{"R$ " + formattedPrice}</h4>
+          <div>
+            <h4 className="font-body-600">{"R$ " + formattedPrice}</h4>
+            <span>Estoque: {stock} </span>
+          </div>
           <Button
             size="medium"
-            color="primary"
-            content="Adicionar"
+            color={stock != 0 ? "primary" : "disable"}
+            content={stock != 0 ? "Adicionar" : "Indisponível"}
             onClick={() => addProduct()}
           />
         </div>

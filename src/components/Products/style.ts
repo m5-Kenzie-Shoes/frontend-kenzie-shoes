@@ -56,6 +56,9 @@ export const StyledProducts = styled.li`
       align-items: center;
       min-width: 200px;
       max-width: 200px;
+      > div > span {
+        font-size: x-small;
+      }
     }
   }
 

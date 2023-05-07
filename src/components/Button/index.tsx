@@ -3,7 +3,7 @@ import { StyledButton } from "./style";
 interface iButtonProps {
   content: string | React.ReactNode;
   size: "default" | "medium";
-  color: "primary" | "gray";
+  color: "primary" | "gray" | "disable";
   onClick?: React.MouseEventHandler<HTMLButtonElement> | undefined;
 }
 

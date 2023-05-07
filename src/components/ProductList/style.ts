@@ -37,6 +37,7 @@ export const StyledProductList = styled.section`
       flex-wrap: nowrap;
       overflow-x: auto;
       margin-bottom: 1.25rem;
+      margin-top: 50px;
     }
   }
 `;

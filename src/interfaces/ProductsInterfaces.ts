@@ -14,7 +14,7 @@ export interface Products {
     | "Tênis de corrida";
   description: string;
   image_product: string;
-  quantities: number;
+  stock: number;
   user: number;
   value: number;
 }
@@ -33,6 +33,7 @@ export interface CartItem {
   value: number;
   image_product: string;
   quantity: number;
+  stock: number;
 }
 
 export interface CartList {

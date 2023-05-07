@@ -50,7 +50,7 @@ export const StyledCart = styled.aside`
       width: 90%;
       transform: translateY(-450px);
       position: fixed;
-      top: 0;
+      top: 30px;
     }
   }
 `;
