@@ -11,7 +11,6 @@ import { StyledDashboard } from "./style";
 export const DashboardPage = () => {
   const { loadUser } = useContext(UserContext);
   const { products, filteredProducts } = useContext(ProductsContext);
-  console.log("Produtos", products);
 
   return !loadUser ? (
     <>

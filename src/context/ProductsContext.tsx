@@ -17,34 +17,32 @@ export const ProductsProvider = ({ children }: i.ProductsProvider) => {
   );
   const [showCart, setShowCart] = useState(false);
 
-  const { userInfo, setLoadUser } = useContext(UserContext);
+  const { reloadRender, setLoadUser } = useContext(UserContext);
 
   useEffect(() => {
     const loadProducts = async () => {
       const token = localStorage.getItem("@TOKEN");
-
       if (!token) {
         setLoadUser(false);
         navigate("/");
         return;
       }
       api.defaults.headers.common.authorization = `Bearer ${token}`;
-
       const response = await getProducts();
 
       if (response) {
         setProducts(response);
+
         navigate("/dashboard");
       } else {
         localStorage.clear();
         navigate("/");
-        // toast.error("Token inválido!");
       }
       setLoadUser(false);
     };
 
     loadProducts();
-  }, [userInfo]);
+  }, [reloadRender]);
 
   const cleanSearch = () => {
     setWordSearch("");

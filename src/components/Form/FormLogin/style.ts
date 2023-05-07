@@ -22,7 +22,11 @@ export const StyledFormLogin = styled.form`
       }
     }
   }
-
+  fieldset {
+    svg {
+      height: auto;
+    }
+  }
   > p {
     text-align: center;
     align-self: center;

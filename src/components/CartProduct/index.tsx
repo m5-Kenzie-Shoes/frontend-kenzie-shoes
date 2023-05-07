@@ -3,10 +3,11 @@ import { FaTrash } from "react-icons/fa";
 import { StyledCartProduct } from "./style";
 import { ProductsContext } from "../../context/ProductsContext";
 import * as i from "../../interfaces/ProductsInterfaces";
+import { UserContext } from "../../context/UserContext";
 
 export const CartProduct = ({ cartItem }: i.CartList) => {
   const { cartList, setCartList } = useContext(ProductsContext);
-  const { id, name, image_product, quantity } = cartItem;
+  const { id, name, image_product, quantity, stock } = cartItem;
 
   const removeItem = () => {
     const updatedList = cartList.filter((item) => item.id != cartItem.id);
@@ -16,7 +17,7 @@ export const CartProduct = ({ cartItem }: i.CartList) => {
   const addItem = () => {
     cartList.map((item) => {
       if (item.id === id) {
-        item.quantity += 1;
+        if (item.quantity < stock) item.quantity += 1;
       }
     });
     const updateList = cartList.map((item) => item);
@@ -47,7 +48,7 @@ export const CartProduct = ({ cartItem }: i.CartList) => {
         </div>
       </div>
       <button className="caption" onClick={() => removeItem()}>
-        <FaTrash size={20} color={"var(--color-gray-50)"} />
+        <FaTrash size={20} color={"var(--color-primary)"} />
       </button>
     </StyledCartProduct>
   );

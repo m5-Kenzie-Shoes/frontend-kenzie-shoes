@@ -7,7 +7,7 @@ export const StyledColors = createGlobalStyle`
         --color-secondary: #eb5757;
 
         --color-gray-100: #333333;
-        --color-gray-50: #00a999;
+        --color-gray-50: #8c8c8c;
         --color-gray-30: #aaaaaa;
         --color-gray-20: #e0e0e0;
         --color-gray-0: #f5f5f5;
