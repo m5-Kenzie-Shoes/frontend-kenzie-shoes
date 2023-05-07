@@ -93,11 +93,46 @@ export const decreaseStock = async (product_id: number, stock: number) => {
   }
 };
 
+export const updateQuantitiesCart = async (
+  cart_id: number,
+  new_quantity: number
+) => {
+  try {
+    const { data, status } = await api.patch(`cart/${cart_id}/`, {
+      quantities: new_quantity,
+    });
+
+    status === 200 && toast.success("Quantidade alterada com sucesso!");
+
+    return data;
+  } catch (error) {
+    const message = error as AxiosError<string>;
+    console.log(message);
+    return false;
+  }
+};
+
 export const fillCart = async (product_id: number) => {
   try {
     const { data, status } = await api.post(`products/${product_id}/cart/`);
     console.log(data);
-    status === 201 && toast.success("Ordem criada com Sucesso!");
+    status === 201 && toast.success("Enviado para o Carrinho!");
+
+    return data;
+  } catch (error) {
+    const message = error as AxiosError<string>;
+    console.log(message);
+    return false;
+  }
+};
+
+export const transformToSeller = async (user_id: number) => {
+  try {
+    const { data, status } = await api.patch(`users/${user_id}/`, {
+      is_seller: true,
+    });
+    console.log(data);
+    status === 201 && toast.success("Enviado para o Carrinho!");
 
     return data;
   } catch (error) {

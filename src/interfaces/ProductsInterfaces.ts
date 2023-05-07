@@ -56,4 +56,6 @@ export interface ProductsContext {
   cleanSearch: () => void;
   showCart: boolean;
   setShowCart: React.Dispatch<React.SetStateAction<boolean>>;
+  cartId: number | null;
+  setCartId: React.Dispatch<React.SetStateAction<number | null>>;
 }

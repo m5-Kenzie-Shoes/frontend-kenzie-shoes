@@ -12,6 +12,7 @@ export const ProductsProvider = ({ children }: i.ProductsProvider) => {
   const [wordSearch, setWordSearch] = useState("");
   const [products, setProducts] = useState<i.Products[] | []>([]);
   const [cartList, setCartList] = useState([] as i.CartItem[]);
+  const [cartId, setCartId] = useState<number | null>(null);
   const [filteredProducts, setFilteredProducts] = useState<i.Products[] | []>(
     []
   );
@@ -22,17 +23,21 @@ export const ProductsProvider = ({ children }: i.ProductsProvider) => {
   useEffect(() => {
     const loadProducts = async () => {
       const token = localStorage.getItem("@TOKEN");
-      if (!token) {
+      if (token) {
+        api.defaults.headers.common.authorization = `Bearer ${token}`;
+      }
+
+      /* if (!token) {
         setLoadUser(false);
         navigate("/");
         return;
       }
-      api.defaults.headers.common.authorization = `Bearer ${token}`;
+      api.defaults.headers.common.authorization = `Bearer ${token}`; */
+
       const response = await getProducts();
 
       if (response) {
         setProducts(response);
-
         navigate("/dashboard");
       } else {
         localStorage.clear();
@@ -63,6 +68,8 @@ export const ProductsProvider = ({ children }: i.ProductsProvider) => {
         cleanSearch,
         showCart,
         setShowCart,
+        cartId,
+        setCartId,
       }}
     >
       {children}

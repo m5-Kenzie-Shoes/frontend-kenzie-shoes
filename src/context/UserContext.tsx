@@ -8,6 +8,7 @@ export const UserContext = createContext({} as i.UserContext);
 export const UserProvider = ({ children }: i.UserProvider) => {
   const navigate = useNavigate();
   const [loadUser, setLoadUser] = useState(true);
+  const [userId, setUserId] = useState<number | null>(null);
   const [showPass, setShowPass] = useState(false);
   const [reloadRender, setReloadRender] = useState(false);
 
@@ -17,6 +18,7 @@ export const UserProvider = ({ children }: i.UserProvider) => {
 
     if (response) {
       localStorage.setItem("@TOKEN", access);
+      setUserId(JSON.parse(atob(access!.split(".")[1])).user_id);
       setReloadRender(!reloadRender);
 
       setTimeout(() => {
@@ -35,12 +37,13 @@ export const UserProvider = ({ children }: i.UserProvider) => {
 
   const logout = () => {
     localStorage.clear();
-    navigate("/");
+    navigate("/login");
   };
 
   return (
     <UserContext.Provider
       value={{
+        userId,
         reloadRender,
         setReloadRender,
         loadUser,

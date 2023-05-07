@@ -9,6 +9,7 @@ interface User {
 }
 
 export interface UserContext {
+  userId: number | null;
   reloadRender: boolean;
   setReloadRender: React.Dispatch<React.SetStateAction<boolean>>;
   loadUser: boolean;

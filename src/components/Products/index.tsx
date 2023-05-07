@@ -5,9 +5,11 @@ import { useContext } from "react";
 import { ProductsContext } from "../../context/ProductsContext";
 import * as i from "../../interfaces/ProductsInterfaces";
 import { fillCart } from "../../services/api";
+import { useNavigate } from "react-router-dom";
 
 export const Products = ({ products }: i.ProductList) => {
-  const { cartList, setCartList } = useContext(ProductsContext);
+  const navigate = useNavigate();
+  const { cartList, setCartId, setCartList } = useContext(ProductsContext);
   const { id, name, image_product, category, description, user, stock, value } =
     products;
 
@@ -17,6 +19,12 @@ export const Products = ({ products }: i.ProductList) => {
   });
 
   const addProduct = async () => {
+    const token = localStorage.getItem("@TOKEN");
+    if (!token) {
+      toast.error("Faça Login para efetuar compras!");
+      navigate("/login");
+      return;
+    }
     const duplicatedItem = cartList.some((item) => item.id === products.id);
     const newProduct = {
       id: id,
@@ -32,9 +40,8 @@ export const Products = ({ products }: i.ProductList) => {
 
     if (!duplicatedItem) {
       setCartList([...cartList, newProduct]);
-      console.log(id);
-      await fillCart(id);
-      toast.success("Enviado para o carrinho!");
+      const response = await fillCart(id);
+      setCartId(response.id);
     } else {
       toast.error("Produto já está no carrinho!");
     }
