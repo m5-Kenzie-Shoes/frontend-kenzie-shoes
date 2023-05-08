@@ -2,7 +2,7 @@ import styled, { css } from "styled-components";
 
 interface iStyledButtonProps {
   size: "default" | "medium";
-  color: "primary" | "gray";
+  color: "primary" | "gray" | "disable";
 }
 
 const buttonVariants = {
@@ -30,15 +30,27 @@ const buttonVariants = {
   `,
 
   gray: css`
-    color: var(--color-gray-50);
+    color: var(--color-primary);
     background-color: var(--color-gray-0);
     border: 0.125rem solid var(--color-gray-20);
 
     :hover {
+      /* color: var(--color-gray-20); */
+      /* background-color: var(--color-gray-50); */
+      border: 0.125rem solid var(--color-primary);
+    }
+  `,
+
+  disable: css`
+    color: var(--color-gray-50);
+    background-color: var(--color-gray-0);
+    border: 0.125rem solid var(--color-gray-20);
+    pointer-events: none;
+    /* :hover {
       color: var(--color-gray-20);
       background-color: var(--color-gray-50);
       border: 0.125rem solid var(--color-gray-50);
-    }
+    } */
   `,
 };
 

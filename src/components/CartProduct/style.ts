@@ -9,8 +9,8 @@ export const StyledCartProduct = styled.li`
   position: relative;
   border-radius: var(--border-radius-1);
   animation: in-cart 0.5s ease-in-out;
-  background-color: var(--color-gray-30);
-  border: 1px solid var(--color-gray-20);
+  background-color: var(--color-gray-20);
+  border: 1px solid var(--color-gray-30);
   padding: 3px;
   :hover {
     box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.25);
@@ -43,10 +43,10 @@ export const StyledCartProduct = styled.li`
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border: 1px solid var(--color-gray-20);
+      border: 1px solid var(--color-gray-30);
       border-radius: var(--border-radius-2);
       width: 106px;
-      height: 25px;
+      height: 23px;
 
       button {
         display: flex;
@@ -54,9 +54,10 @@ export const StyledCartProduct = styled.li`
         align-items: center;
         justify-content: center;
         font-size: 25px;
-        color: var(--color-secondary);
+        color: var(--color-primary);
         border: none;
-        background-color: var(--color-gray-20);
+        border-radius: var(--border-radius-2);
+        background-color: var(--color-gray-30);
         height: 100%;
         width: 30px;
         padding-bottom: 3px;

@@ -2,11 +2,14 @@ import { useContext } from "react";
 import { FaTrash } from "react-icons/fa";
 import { StyledCartProduct } from "./style";
 import { ProductsContext } from "../../context/ProductsContext";
+import { updateQuantitiesCart } from "../../services/api";
 import * as i from "../../interfaces/ProductsInterfaces";
+import { UserContext } from "../../context/UserContext";
 
 export const CartProduct = ({ cartItem }: i.CartList) => {
-  const { cartList, setCartList } = useContext(ProductsContext);
-  const { id, name, image_product, quantity } = cartItem;
+  const { cartList, setCartList, cartId } = useContext(ProductsContext);
+  const { userId } = useContext(UserContext);
+  const { id, name, image_product, quantity, stock } = cartItem;
 
   const removeItem = () => {
     const updatedList = cartList.filter((item) => item.id != cartItem.id);
@@ -14,9 +17,12 @@ export const CartProduct = ({ cartItem }: i.CartList) => {
   };
 
   const addItem = () => {
-    cartList.map((item) => {
+    cartList.map(async (item) => {
       if (item.id === id) {
-        item.quantity += 1;
+        if (item.quantity < stock) {
+          item.quantity += 1;
+          await updateQuantitiesCart(cartId!, item.quantity);
+        }
       }
     });
     const updateList = cartList.map((item) => item);
@@ -24,9 +30,10 @@ export const CartProduct = ({ cartItem }: i.CartList) => {
   };
 
   const subItem = () => {
-    cartList.map((item) => {
+    cartList.map(async (item) => {
       if (item.id === id && item.quantity > 1) {
         item.quantity -= 1;
+        await updateQuantitiesCart(cartId!, item.quantity);
       }
     });
     const updateList = cartList.map((item) => item);
@@ -47,7 +54,7 @@ export const CartProduct = ({ cartItem }: i.CartList) => {
         </div>
       </div>
       <button className="caption" onClick={() => removeItem()}>
-        <FaTrash size={20} color={"var(--color-gray-50)"} />
+        <FaTrash size={20} color={"var(--color-primary)"} />
       </button>
     </StyledCartProduct>
   );

@@ -8,17 +8,18 @@ export const UserContext = createContext({} as i.UserContext);
 export const UserProvider = ({ children }: i.UserProvider) => {
   const navigate = useNavigate();
   const [loadUser, setLoadUser] = useState(true);
-  const [userInfo, setUserInfo] = useState(null);
+  const [userId, setUserId] = useState<number | null>(null);
   const [showPass, setShowPass] = useState(false);
+  const [reloadRender, setReloadRender] = useState(false);
 
   const loginSubmit = async (data: i.DataLogin) => {
     const response = await loginUser(data);
-    // const { user, access } = response;
+    const { access } = response;
 
     if (response) {
-      localStorage.setItem("@TOKEN", response.access);
-      // localStorage.setItem("@USER", JSON.stringify(user));
-      // setUserInfo(user);
+      localStorage.setItem("@TOKEN", access);
+      setUserId(JSON.parse(atob(access!.split(".")[1])).user_id);
+      setReloadRender(!reloadRender);
 
       setTimeout(() => {
         navigate("/dashboard");
@@ -29,38 +30,22 @@ export const UserProvider = ({ children }: i.UserProvider) => {
   };
 
   const registerSubmit = async (data: i.DataRegister) => {
-    // console.log(data);
-    const body = {
-      username: data.username,
-      first_name: data.first_name,
-      last_name: data.last_name,
-      email: data.email,
-      password: data.password,
-      img: data.img,
-      address: {
-        street: data.address.street,
-        number: data.address.number,
-        add_on: data.address.add_on,
-        city: data.address.city,
-        state: data.address.state,
-        zipcode: data.address.zipcode,
-      },
-    };
-
-    const response = await createUser(body);
+    const response = await createUser(data);
 
     response && navigate("/login");
   };
 
   const logout = () => {
     localStorage.clear();
-    navigate("/");
+    navigate("/login");
   };
 
   return (
     <UserContext.Provider
       value={{
-        userInfo,
+        userId,
+        reloadRender,
+        setReloadRender,
         loadUser,
         setLoadUser,
         loginSubmit,

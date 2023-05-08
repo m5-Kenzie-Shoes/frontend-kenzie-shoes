@@ -2,9 +2,14 @@ import { useContext } from "react";
 import { ProductsContext } from "../../context/ProductsContext";
 import { Button } from "../Button";
 import { StyledCartTotal } from "./style";
+import { decreaseStock, getProductById, getProducts } from "../../services/api";
+import { UserContext } from "../../context/UserContext";
 
 export const CartTotal = () => {
-  const { cartList, setCartList, setShowCart } = useContext(ProductsContext);
+  const { cartList, setCartList, setShowCart, setProducts } =
+    useContext(ProductsContext);
+  const { reloadRender, setReloadRender, setLoadUser } =
+    useContext(UserContext);
   const cartSum = cartList.reduce(
     (acc, current) => acc + current.value * current.quantity,
     0
@@ -19,8 +24,17 @@ export const CartTotal = () => {
     setShowCart(false);
   };
 
-  const fechaPedido = () => {
-    alert("PEDIDO FINALIZADO COM SUCESSO");
+  const fechaPedido = async () => {
+    await Promise.all(
+      cartList.map(async (item) => {
+        const getProduct = await getProductById(item.id);
+        const newStock = getProduct.stock - item.quantity;
+        await decreaseStock(item.id, newStock);
+      })
+    );
+    setCartList([]);
+    setShowCart(false);
+    setReloadRender(!reloadRender);
   };
 
   return (
@@ -38,7 +52,7 @@ export const CartTotal = () => {
         />
         <Button
           size="medium"
-          onClick={() => fechaPedido()}
+          onClick={async () => await fechaPedido()}
           content="Finalizar Pedido"
           color={"primary"}
         />

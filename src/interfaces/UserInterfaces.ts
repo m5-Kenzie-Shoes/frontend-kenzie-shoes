@@ -8,13 +8,10 @@ interface User {
   email: string;
 }
 
-interface UserInfo {
-  accessToken: string;
-  user: User;
-}
-
 export interface UserContext {
-  userInfo: null | UserInfo;
+  userId: number | null;
+  reloadRender: boolean;
+  setReloadRender: React.Dispatch<React.SetStateAction<boolean>>;
   loadUser: boolean;
   setLoadUser: React.Dispatch<React.SetStateAction<boolean>>;
   loginSubmit: (data: DataLogin) => void;
