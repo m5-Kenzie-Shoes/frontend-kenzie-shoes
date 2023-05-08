@@ -76,6 +76,24 @@ export const StyledGlobals = createGlobalStyle`
 
     }
   }
+
+  .imgBanneLP{
+    margin: 0 auto;
+    display: block;
+    padding-top: 4rem;
+    width: 100%;
+  }
+
+  .cardReviewContainer{
+    margin: 0 auto;
+    width: 100%;
+    background: linear-gradient(180deg, #93d7AF 0%, #00A999 100%);
+    height: 40rem;
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    flex-direction: row;                                                                                                                                                                                                                                                                                                                                                                      
+  }
   
   @keyframes anim-adjust-img {
     0% {

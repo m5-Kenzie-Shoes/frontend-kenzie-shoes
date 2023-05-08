@@ -14,6 +14,8 @@ export const StyledTypography = createGlobalStyle`
     :root {
       --font-family-1: "Inter", sans-serif;
 
+      --font-title:2rem;
+
       --font-size-1: 1.625rem;
       --font-size-2: 1.375rem;
       --font-size-3: 1.125rem;
@@ -24,6 +26,13 @@ export const StyledTypography = createGlobalStyle`
       --font-weigth-1: 700;
       --font-weigth-2: 600;
       --font-weigth-3: 400;
+    }
+
+
+
+    .font-title{
+      font-size: var(--font-title);
+      font-weight: var(--font-weigth-1);
     }
 
     .font-heading-1 {
