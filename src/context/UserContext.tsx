@@ -1,6 +1,6 @@
 import { createContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { createUser, loginUser } from "../services/api";
+import { createUser, loginUser } from "../services/users";
 import * as i from "../interfaces/UserInterfaces";
 
 export const UserContext = createContext({} as i.UserContext);
@@ -8,7 +8,6 @@ export const UserContext = createContext({} as i.UserContext);
 export const UserProvider = ({ children }: i.UserProvider) => {
   const navigate = useNavigate();
   const [loadUser, setLoadUser] = useState(true);
-  const [userId, setUserId] = useState<number | null>(null);
   const [showPass, setShowPass] = useState(false);
   const [reloadRender, setReloadRender] = useState(false);
   const [showProfileModal, setShowProfileModal] = useState(false);
@@ -16,15 +15,17 @@ export const UserProvider = ({ children }: i.UserProvider) => {
 
   const loginSubmit = async (data: i.DataLogin) => {
     const response = await loginUser(data);
-    const { access } = response;
 
     if (response) {
-      localStorage.setItem("@TOKEN", access);
-      setUserId(JSON.parse(atob(access!.split(".")[1])).user_id);
+      localStorage.setItem("@TOKEN", response.access);
+
+      const user_id = JSON.parse(atob(response.access!.split(".")[1])).user_id;
+      localStorage.setItem("@USER_ID", user_id);
+
       setReloadRender(!reloadRender);
 
       setTimeout(() => {
-        navigate("/dashboard");
+        navigate("/");
       }, 2000);
     } else {
       localStorage.clear();
@@ -52,7 +53,6 @@ export const UserProvider = ({ children }: i.UserProvider) => {
   return (
     <UserContext.Provider
       value={{
-        userId,
         reloadRender,
         setReloadRender,
         loadUser,

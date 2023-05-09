@@ -3,14 +3,14 @@ import { toast } from "react-toastify";
 import { Button } from "../Button";
 import { useContext } from "react";
 import { ProductsContext } from "../../context/ProductsContext";
-import * as i from "../../interfaces/ProductsInterfaces";
-import { fillCart } from "../../services/api";
+import { fillCart } from "../../services/cart";
 import { useNavigate } from "react-router-dom";
+import * as i from "../../interfaces/ProductsInterfaces";
 
 export const Products = ({ products }: i.ProductList) => {
   const navigate = useNavigate();
-  const { cartList, setCartId, setCartList } = useContext(ProductsContext);
-  const { id, name, image_product, category, description, user, stock, value } =
+  const { setCartId, cartList, setCartList } = useContext(ProductsContext);
+  const { id, name, image_product, category, description, stock, value } =
     products;
 
   const formattedPrice = value.toLocaleString("pt-br", {
@@ -26,22 +26,17 @@ export const Products = ({ products }: i.ProductList) => {
       return;
     }
     const duplicatedItem = cartList.some((item) => item.id === products.id);
-    const newProduct = {
-      id: id,
-      name: name,
-      image_product: image_product,
-      category: category,
-      value: value,
-      user: user,
-      description: description,
-      quantity: 1,
-      stock: stock,
-    };
 
     if (!duplicatedItem) {
-      setCartList([...cartList, newProduct]);
       const response = await fillCart(id);
+      const newProduct = {
+        ...products,
+        quantity: 1,
+        cart_id: response.id,
+      };
+
       setCartId(response.id);
+      setCartList([...cartList, newProduct]);
     } else {
       toast.error("Produto já está no carrinho!");
     }
