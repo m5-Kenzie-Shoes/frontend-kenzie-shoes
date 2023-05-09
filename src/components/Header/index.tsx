@@ -44,7 +44,7 @@ export const Header = () => {
             <button onClick={() => logout()}>
               <TbLogout size={30} color={"var(--color-gray-100)"} />
             </button>
-            <button onClick={() => setShowProfileModal(!showProfileModal)}>
+            <button onClick={() => setShowProfileModal(true)}>
               <img className="userImg" src={userImg} alt="" />
             </button>
           </div>

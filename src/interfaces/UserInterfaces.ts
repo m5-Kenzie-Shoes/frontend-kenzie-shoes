@@ -16,7 +16,7 @@ export interface UserContext {
   setLoadUser: React.Dispatch<React.SetStateAction<boolean>>;
   loginSubmit: (data: DataLogin) => void;
   registerSubmit: (data: DataRegister) => void;
-  UserUpdateSubmit: (data: DataRegister) => void;
+  UserUpdateSubmit: (data: UpdateDataUser) => void;
   logout: () => void;
   showPass: boolean;
   setShowPass: React.Dispatch<React.SetStateAction<boolean>>;
@@ -45,6 +45,13 @@ export interface DataRegister {
   first_name: string;
   last_name: string;
   email: string;
+  password: string;
+  rePassword?: string;
+  img: string;
+  address: DataAddress;
+}
+
+export interface UpdateDataUser {
   password: string;
   rePassword?: string;
   img: string;

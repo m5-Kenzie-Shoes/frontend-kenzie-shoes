@@ -73,3 +73,20 @@ export const transformToSeller = async (user_id: number) => {
     return false;
   }
 };
+
+export const updateDataUser = async (
+  userData: i.UpdateDataUser,
+  user_id: number
+) => {
+  try {
+    console.log(userData);
+    console.log(user_id);
+    const { data, status } = await api.patch(`users/${user_id}/`, userData);
+    status === 200 && toast.success("Usuário atualizado com sucesso!");
+    return data;
+  } catch (error) {
+    const message = error as AxiosError<string>;
+    console.log(message);
+    return false;
+  }
+};

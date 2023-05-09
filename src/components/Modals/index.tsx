@@ -32,7 +32,7 @@ export const Modal = () => {
             <h3>Editar Perfil</h3>
             <button
               className="buttonX"
-              onClick={() => setCloseModal(!closeModal)}
+              onClick={() => setShowProfileModal(false)}
             >
               X
             </button>
@@ -41,7 +41,7 @@ export const Modal = () => {
           <form
             className="formProfile"
             onSubmit={handleSubmit(UserUpdateSubmit)}
-            /*  noValidate */
+            noValidate
           >
             <div className="inputs">
               <h4>Dados pessoais</h4>

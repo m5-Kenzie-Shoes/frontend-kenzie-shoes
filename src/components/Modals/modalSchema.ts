@@ -16,8 +16,8 @@ export const ModalSchema = yup.object().shape({
   img: yup.string(),
   address: yup.object({
     street: yup.string().required("* campo obrigatório"),
-    number: yup.string().required("* campo obrigatório"),
-    add_on: yup.string().max(5, "máximo de 5 caracteres"),
+    number: yup.number().required("* campo obrigatório"),
+    add_on: yup.number().optional().max(5, "máximo de 5 caracteres"),
     city: yup.string().required("* campo obrigatório"),
     state: yup
       .string()
