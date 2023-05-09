@@ -4,9 +4,11 @@ import { StyledCart } from "./style";
 import { useContext } from "react";
 import { ProductsContext } from "../../context/ProductsContext";
 import { AnimSlideDown } from "../../animation";
+import { UserContext } from "../../context/UserContext";
 
 export const Cart = () => {
-  const { cartList, showCart } = useContext(ProductsContext);
+  const { showCart } = useContext(ProductsContext);
+  const { cartList } = useContext(UserContext);
 
   return showCart ? (
     <StyledCart>

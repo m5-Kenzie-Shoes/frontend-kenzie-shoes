@@ -4,8 +4,9 @@ import { Button } from "../Button";
 import { useContext } from "react";
 import { ProductsContext } from "../../context/ProductsContext";
 import * as i from "../../interfaces/ProductsInterfaces";
-import { fillCart } from "../../services/api";
+import { fillCart } from "../../services/cart";
 import { useNavigate } from "react-router-dom";
+import { UserContext } from "../../context/UserContext";
 
 export const Products = ({ products }: i.ProductList) => {
   const navigate = useNavigate();
@@ -42,6 +43,7 @@ export const Products = ({ products }: i.ProductList) => {
       setCartList([...cartList, newProduct]);
       const response = await fillCart(id);
       setCartId(response.id);
+      console.log(response.id);
     } else {
       toast.error("Produto já está no carrinho!");
     }

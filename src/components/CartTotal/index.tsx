@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { ProductsContext } from "../../context/ProductsContext";
 import { Button } from "../Button";
 import { StyledCartTotal } from "./style";
-import { decreaseStock, getProductById, getProducts } from "../../services/api";
+import { decreaseStock, getProductById } from "../../services/products";
 import { UserContext } from "../../context/UserContext";
 
 export const CartTotal = () => {

@@ -1,9 +1,10 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { api, getProducts } from "../services/api";
+import { getProducts } from "../services/products";
+import { api } from "../services/api";
 import { UserContext } from "./UserContext";
-import { toast } from "react-toastify";
 import * as i from "../interfaces/ProductsInterfaces";
+import { getUserById } from "../services/users";
 
 export const ProductsContext = createContext({} as i.ProductsContext);
 
@@ -18,7 +19,7 @@ export const ProductsProvider = ({ children }: i.ProductsProvider) => {
   );
   const [showCart, setShowCart] = useState(false);
 
-  const { reloadRender, setLoadUser } = useContext(UserContext);
+  const { reloadRender, setLoadUser, userId } = useContext(UserContext);
 
   useEffect(() => {
     const loadProducts = async () => {
@@ -34,14 +35,14 @@ export const ProductsProvider = ({ children }: i.ProductsProvider) => {
       }
       api.defaults.headers.common.authorization = `Bearer ${token}`; */
 
-      const response = await getProducts();
+      const productsResponse = await getProducts();
 
-      if (response) {
-        setProducts(response);
-        navigate("/dashboard");
+      if (productsResponse) {
+        setProducts(productsResponse);
+        navigate("/");
       } else {
         localStorage.clear();
-        navigate("/");
+        navigate("/login");
       }
       setLoadUser(false);
     };

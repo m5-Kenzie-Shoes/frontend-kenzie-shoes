@@ -22,7 +22,7 @@ export const UserProvider = ({ children }: i.UserProvider) => {
       setReloadRender(!reloadRender);
 
       setTimeout(() => {
-        navigate("/dashboard");
+        navigate("/");
       }, 2000);
     } else {
       localStorage.clear();

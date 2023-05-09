@@ -2,16 +2,21 @@ import { useContext } from "react";
 import { FaTrash } from "react-icons/fa";
 import { StyledCartProduct } from "./style";
 import { ProductsContext } from "../../context/ProductsContext";
-import { updateQuantitiesCart } from "../../services/api";
+import { removeItemCart, updateQuantitiesCart } from "../../services/cart";
 import * as i from "../../interfaces/ProductsInterfaces";
 import { UserContext } from "../../context/UserContext";
 
-export const CartProduct = ({ cartItem }: i.CartList) => {
-  const { cartList, setCartList, cartId } = useContext(ProductsContext);
-  const { userId } = useContext(UserContext);
-  const { id, name, image_product, quantity, stock } = cartItem;
+// export const CartProduct = ({ cartItem }: i.CartList) => {
+export const CartProduct = ({ cartItem }: any) => {
+  const { cartId } = useContext(ProductsContext);
+  const { cartList, setCartList } = useContext(UserContext);
 
-  const removeItem = () => {
+  const { id, quantities, product } = cartItem;
+  const { stock, image_product, name } = product;
+
+  const removeItem = async () => {
+    console.log(cartItem);
+    await removeItemCart(cartId!);
     const updatedList = cartList.filter((item) => item.id != cartItem.id);
     setCartList(updatedList);
   };
@@ -21,12 +26,13 @@ export const CartProduct = ({ cartItem }: i.CartList) => {
       if (item.id === id) {
         if (item.quantity < stock) {
           item.quantity += 1;
+          console.log(cartId);
           await updateQuantitiesCart(cartId!, item.quantity);
         }
       }
     });
     const updateList = cartList.map((item) => item);
-    setCartList(updateList);
+    // setCartList(updateList);
   };
 
   const subItem = () => {
@@ -37,7 +43,7 @@ export const CartProduct = ({ cartItem }: i.CartList) => {
       }
     });
     const updateList = cartList.map((item) => item);
-    setCartList(updateList);
+    // setCartList(updateList);
   };
 
   return (
@@ -49,7 +55,7 @@ export const CartProduct = ({ cartItem }: i.CartList) => {
         <h4 className="font-heading-4">{name}</h4>
         <div>
           <button onClick={() => subItem()}>-</button>
-          <span>{quantity}</span>
+          <span>{quantities}</span>
           <button onClick={() => addItem()}>+</button>
         </div>
       </div>

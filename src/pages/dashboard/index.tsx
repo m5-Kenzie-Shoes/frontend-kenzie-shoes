@@ -17,11 +17,17 @@ export const DashboardPage = () => {
       <Header />
       <AnimSlideDown>
         <StyledDashboard>
-          <ProductList
-            products={
-              filteredProducts.length != 0 ? filteredProducts : products
-            }
-          />
+          {products.length == 0 ? (
+            <div>
+              <p>Nenhum produto a Venda no momento!</p>
+            </div>
+          ) : (
+            <ProductList
+              products={
+                filteredProducts.length != 0 ? filteredProducts : products
+              }
+            />
+          )}
           <Cart />
         </StyledDashboard>
       </AnimSlideDown>

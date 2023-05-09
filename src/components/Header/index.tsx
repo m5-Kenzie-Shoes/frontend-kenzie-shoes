@@ -7,7 +7,7 @@ import { FaShoppingCart } from "react-icons/fa";
 import { TbLogout } from "react-icons/tb";
 import { UserContext } from "../../context/UserContext";
 import { Button } from "../Button";
-import { transformToSeller } from "../../services/api";
+import { transformToSeller } from "../../services/users";
 
 export const Header = () => {
   const { logout, userId } = useContext(UserContext);
@@ -20,7 +20,7 @@ export const Header = () => {
   return (
     <StyledHeader>
       <div className="container">
-        <img className="newLogo" src={logo} alt="logomarca Burguer Kenzie" />
+        <img className="newLogo" src={logo} alt="logomarca Kenzie Shoes" />
         <div>
           {/* <img src={vender} alt="venda aqui" /> */}
           <Button
