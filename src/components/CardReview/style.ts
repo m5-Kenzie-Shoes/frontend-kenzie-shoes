@@ -9,7 +9,8 @@ export const CardReviewStyled = styled.div`
   flex-direction: column;
   img {
     width: 100%;
-    height: 13rem;
+    height: 19rem;
+    object-fit: cover;
   }
   div {
     padding: 0 2rem;

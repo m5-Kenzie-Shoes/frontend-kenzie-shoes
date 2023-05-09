@@ -77,11 +77,41 @@ export const StyledGlobals = createGlobalStyle`
     }
   }
 
+ 
+
+  .divPasso{
+    margin-top: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .imgPasso{
+    /* margin: 0 auto;
+    display: block; */
+    padding-top: 4rem;
+    width: 100%;
+    margin-top: 2rem;
+  }
+
   .imgBanneLP{
     margin: 0 auto;
     display: block;
     padding-top: 4rem;
     width: 100%;
+  }
+
+  .buttonCenter{
+    margin: 0 auto;
+    /* display: block; */
+    margin-top: 2rem;
+    display: flex;
+  }
+
+  .cardReviewListContainer{
+    display: flex;
+    gap: 2rem;
+    align-items: center;
   }
 
   .cardReviewContainer{
@@ -92,7 +122,8 @@ export const StyledGlobals = createGlobalStyle`
     padding: 0 2rem;
     display: flex;
     align-items: center;
-    flex-direction: row;                                                                                                                                                                                                                                                                                                                                                                      
+    flex-direction: row;
+    justify-content: center;                                                                                                                                                                                                                                                                                                                                                                      
   }
   
   @keyframes anim-adjust-img {
