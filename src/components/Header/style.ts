@@ -17,6 +17,16 @@ export const StyledHeader = styled.header`
     margin-top: 50px;
   }
 
+  .userImg {
+    border-radius: 100%;
+    height: 50px;
+    width: 50px;
+    overflow: hidden;
+    cursor: pointer;
+    border: none;
+    object-fit: cover;
+  }
+
   > div {
     display: flex;
     justify-content: space-between;

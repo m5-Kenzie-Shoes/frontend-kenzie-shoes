@@ -7,11 +7,13 @@ import { ProductList } from "../../components/ProductList";
 import { ProductsContext } from "../../context/ProductsContext";
 import { UserContext } from "../../context/UserContext";
 import { StyledDashboard } from "./style";
+import { Modal } from "../../components/Modals";
+import blackImg from "../../images/black.jpeg";
 
 export const DashboardPage = () => {
   const { loadUser } = useContext(UserContext);
   const { products, filteredProducts } = useContext(ProductsContext);
-
+  const { showProfileModal, setShowProfileModal } = useContext(UserContext);
   return !loadUser ? (
     <>
       <Header />
@@ -29,6 +31,7 @@ export const DashboardPage = () => {
             />
           )}
           <Cart />
+          <Modal />
         </StyledDashboard>
       </AnimSlideDown>
     </>
