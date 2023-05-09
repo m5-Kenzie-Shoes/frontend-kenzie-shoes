@@ -11,10 +11,10 @@ export const Hero = () => {
         <div className="heroCabecalho">
           <img className="logoKenzieShoes" src={logo} alt="logo KenzieShoes" />
           <div>
-            <StyledLink to={"./"} typetext="yes">
+            <StyledLink to={"./login"} typetext="yes">
               Login
             </StyledLink>
-            <StyledLink to={"./"} typetext="button">
+            <StyledLink to={"./register"} typetext="button">
               Cadastre-se
             </StyledLink>
           </div>

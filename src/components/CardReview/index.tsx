@@ -6,11 +6,8 @@ export const CardReview = () => {
     <CardReviewStyled>
       <img src={homem} alt="" />
       <div>
-        <span>Márcio Guerra</span>
-        <span>
-          Maravilhoso encontrar uma loja onde posso encontrar tudo que procuro
-          com preço honesto
-        </span>
+        <span className="font-headline-3">Sapato</span>
+        <span className="font-heading-1-green">R$12,00</span>
       </div>
     </CardReviewStyled>
   );

@@ -40,6 +40,14 @@ export const StyledTypography = createGlobalStyle`
       font-weight: var(--font-weigth-1);
   }
 
+
+
+    .font-heading-1-green{
+      font-size: var(--font-size-1);
+      font-weight: var(--font-weigth-1);
+      color: var(--color-primary);
+  }
+
   
   .font-heading-2 {
     font-size: var(--font-size-2);
