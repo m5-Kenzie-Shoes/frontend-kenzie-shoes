@@ -47,8 +47,8 @@ export const loginUser = async (body: i.DataLogin) => {
 export const getUserById = async (user_id: number) => {
   try {
     const { data, status } = await api.get(`users/${user_id}/`);
-    console.log(data);
-    status === 201 && toast.success("Enviado para o Carrinho!");
+
+    // status === 200 && toast.success("Verificando dados usuário!");
 
     return data;
   } catch (error) {
@@ -64,7 +64,7 @@ export const transformToSeller = async (user_id: number) => {
       is_seller: true,
     });
     console.log(data);
-    status === 201 && toast.success("Enviado para o Carrinho!");
+    status === 200 && toast.success("Agora você pode vender!");
 
     return data;
   } catch (error) {

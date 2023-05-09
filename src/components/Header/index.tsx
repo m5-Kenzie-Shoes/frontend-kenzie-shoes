@@ -10,11 +10,12 @@ import { Button } from "../Button";
 import { transformToSeller } from "../../services/users";
 
 export const Header = () => {
-  const { logout, userId } = useContext(UserContext);
+  const { logout } = useContext(UserContext);
   const { cartList, showCart, setShowCart } = useContext(ProductsContext);
+  const userId = localStorage.getItem("@USER_ID");
 
   const userSell = async () => {
-    await transformToSeller(userId!);
+    await transformToSeller(Number(userId!));
   };
 
   return (
@@ -22,13 +23,14 @@ export const Header = () => {
       <div className="container">
         <img className="newLogo" src={logo} alt="logomarca Kenzie Shoes" />
         <div>
-          {/* <img src={vender} alt="venda aqui" /> */}
-          <Button
-            onClick={() => userSell()}
-            size="medium"
-            color="gray"
-            content={"VENDA AQUI"}
-          />
+          {userId && (
+            <Button
+              onClick={() => userSell()}
+              size="medium"
+              color="gray"
+              content={"VENDA AQUI"}
+            />
+          )}
           <InputSearch />
           <div>
             <div>

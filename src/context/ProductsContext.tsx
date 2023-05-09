@@ -19,23 +19,26 @@ export const ProductsProvider = ({ children }: i.ProductsProvider) => {
   );
   const [showCart, setShowCart] = useState(false);
 
-  const { reloadRender, setLoadUser, userId } = useContext(UserContext);
+  const { reloadRender, setLoadUser } = useContext(UserContext);
 
   useEffect(() => {
     const loadProducts = async () => {
       const token = localStorage.getItem("@TOKEN");
+      const userId = localStorage.getItem("@USER_ID");
       if (token) {
         api.defaults.headers.common.authorization = `Bearer ${token}`;
       }
 
-      /* if (!token) {
-        setLoadUser(false);
-        navigate("/");
-        return;
-      }
-      api.defaults.headers.common.authorization = `Bearer ${token}`; */
-
       const productsResponse = await getProducts();
+
+      if (userId) {
+        const cartString = localStorage.getItem("@CART_LIST");
+
+        if (cartString) {
+          const cartJson = JSON.parse(cartString!);
+          setCartList(cartJson);
+        }
+      }
 
       if (productsResponse) {
         setProducts(productsResponse);

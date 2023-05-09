@@ -1,12 +1,11 @@
 import { AxiosError } from "axios";
 import { toast } from "react-toastify";
 import { api } from "./api";
-// import * as i from "../interfaces/UserInterfaces";
 
 export const getProducts = async () => {
   try {
     const { data } = await api.get("products/");
-    // console.log(data);
+
     return data;
   } catch (error) {
     const message = error as AxiosError<any>;
@@ -26,7 +25,7 @@ export const getProductById = async (product_id: number) => {
   } catch (error) {
     const message = error as AxiosError<string>;
     console.log(message.response?.data);
-    message.response?.data === "jwt expired" &&
+    message.response?.data === "token_not_valid" &&
       toast.error("Token espirado! Faça Login novamente!");
     return false;
   }
@@ -38,7 +37,7 @@ export const decreaseStock = async (product_id: number, stock: number) => {
       stock: stock,
     });
 
-    status === 200 && toast.success("Quantidade retirada do estoque!");
+    status === 200 && toast.success("Pedido Finalizado com Sucesso!");
 
     return data;
   } catch (error) {

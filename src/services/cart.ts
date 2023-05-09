@@ -1,13 +1,12 @@
 import { AxiosError } from "axios";
 import { toast } from "react-toastify";
 import { api } from "./api";
-// import * as i from "../interfaces/UserInterfaces";
 
 export const fillCart = async (product_id: number) => {
   try {
     const { data, status } = await api.post(`products/${product_id}/cart/`);
-    console.log(data);
-    status === 201 && toast.success("Enviado para o Carrinho!");
+    // console.log(data);
+    status === 201 && toast.success("Enviado para o carrinho!");
 
     return data;
   } catch (error) {
@@ -26,7 +25,7 @@ export const updateQuantitiesCart = async (
       quantities: new_quantity,
     });
 
-    status === 200 && toast.success("Quantidade alterada com sucesso!");
+    status === 200 && toast.success("Quantidade do item alterada!");
 
     return data;
   } catch (error) {
@@ -36,11 +35,11 @@ export const updateQuantitiesCart = async (
   }
 };
 
-export const removeItemCart = async (product_id: number) => {
+export const removeItemCart = async (cart_id: number) => {
   try {
-    const { data, status } = await api.delete(`cart/${product_id}/`);
+    const { data, status } = await api.delete(`cart/${cart_id}/`);
 
-    status === 204 && toast.success("Retirado do carrinho com sucesso!");
+    status === 204 && toast.success("Removido do carrinho!");
 
     return data;
   } catch (error) {
@@ -54,7 +53,7 @@ export const deleteCart = async (user_id: number) => {
   try {
     const { data, status } = await api.delete(`cart/${user_id}/`);
 
-    status === 204 && toast.success("Itens removidos com sucesso!");
+    status === 204 && toast.success("Todos os itens foram removidos!");
 
     return data;
   } catch (error) {
