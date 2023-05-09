@@ -1,4 +1,5 @@
 import logo from "../../images/logo.png";
+import userImg from "../../images/eowyn.jpg";
 import { useContext } from "react";
 import { ProductsContext } from "../../context/ProductsContext";
 import { InputSearch } from "../InputSearch";
@@ -12,6 +13,7 @@ import { transformToSeller } from "../../services/api";
 export const Header = () => {
   const { logout, userId } = useContext(UserContext);
   const { cartList, showCart, setShowCart } = useContext(ProductsContext);
+  const { showProfileModal, setShowProfileModal } = useContext(UserContext);
 
   const userSell = async () => {
     await transformToSeller(userId!);
@@ -39,6 +41,9 @@ export const Header = () => {
             </div>
             <button onClick={() => logout()}>
               <TbLogout size={30} color={"var(--color-gray-100)"} />
+            </button>
+            <button onClick={() => setShowProfileModal(!showProfileModal)}>
+              <img className="userImg" src={userImg} alt="" />
             </button>
           </div>
         </div>

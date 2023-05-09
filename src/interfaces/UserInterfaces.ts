@@ -16,9 +16,14 @@ export interface UserContext {
   setLoadUser: React.Dispatch<React.SetStateAction<boolean>>;
   loginSubmit: (data: DataLogin) => void;
   registerSubmit: (data: DataRegister) => void;
+  UserUpdateSubmit: (data: DataRegister) => void;
   logout: () => void;
   showPass: boolean;
   setShowPass: React.Dispatch<React.SetStateAction<boolean>>;
+  showProfileModal: boolean;
+  setShowProfileModal: React.Dispatch<React.SetStateAction<boolean>>;
+  closeModal: boolean;
+  setCloseModal: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export interface DataLogin {

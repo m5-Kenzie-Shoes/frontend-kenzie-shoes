@@ -11,6 +11,8 @@ export const UserProvider = ({ children }: i.UserProvider) => {
   const [userId, setUserId] = useState<number | null>(null);
   const [showPass, setShowPass] = useState(false);
   const [reloadRender, setReloadRender] = useState(false);
+  const [showProfileModal, setShowProfileModal] = useState(false);
+  const [closeModal, setCloseModal] = useState(false);
 
   const loginSubmit = async (data: i.DataLogin) => {
     const response = await loginUser(data);
@@ -35,6 +37,13 @@ export const UserProvider = ({ children }: i.UserProvider) => {
     response && navigate("/login");
   };
 
+  const UserUpdateSubmit = async (data: i.DataRegister) => {
+    console.log(data);
+    const response = await createUser(data);
+
+    response && navigate("/dashboard");
+  };
+
   const logout = () => {
     localStorage.clear();
     navigate("/login");
@@ -50,9 +59,14 @@ export const UserProvider = ({ children }: i.UserProvider) => {
         setLoadUser,
         loginSubmit,
         registerSubmit,
+        UserUpdateSubmit,
         logout,
         showPass,
         setShowPass,
+        showProfileModal,
+        setShowProfileModal,
+        closeModal,
+        setCloseModal,
       }}
     >
       {children}
