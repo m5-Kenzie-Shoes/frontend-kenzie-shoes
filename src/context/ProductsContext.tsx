@@ -1,9 +1,10 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { api, getProducts } from "../services/api";
+import { getProducts } from "../services/products";
+import { api } from "../services/api";
 import { UserContext } from "./UserContext";
-import { toast } from "react-toastify";
 import * as i from "../interfaces/ProductsInterfaces";
+import { getUserById } from "../services/users";
 
 export const ProductsContext = createContext({} as i.ProductsContext);
 
@@ -23,25 +24,28 @@ export const ProductsProvider = ({ children }: i.ProductsProvider) => {
   useEffect(() => {
     const loadProducts = async () => {
       const token = localStorage.getItem("@TOKEN");
+      const userId = localStorage.getItem("@USER_ID");
       if (token) {
         api.defaults.headers.common.authorization = `Bearer ${token}`;
       }
 
-      /* if (!token) {
-        setLoadUser(false);
-        navigate("/");
-        return;
+      const productsResponse = await getProducts();
+
+      if (userId) {
+        const cartString = localStorage.getItem("@CART_LIST");
+
+        if (cartString) {
+          const cartJson = JSON.parse(cartString!);
+          setCartList(cartJson);
+        }
       }
-      api.defaults.headers.common.authorization = `Bearer ${token}`; */
 
-      const response = await getProducts();
-
-      if (response) {
-        setProducts(response);
-        navigate("/dashboard");
+      if (productsResponse) {
+        setProducts(productsResponse);
+        navigate("/");
       } else {
         localStorage.clear();
-        navigate("/");
+        navigate("/login");
       }
       setLoadUser(false);
     };

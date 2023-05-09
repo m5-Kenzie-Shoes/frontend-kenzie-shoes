@@ -7,6 +7,7 @@ import { AnimSlideDown } from "../../animation";
 
 export const Cart = () => {
   const { cartList, showCart } = useContext(ProductsContext);
+  localStorage.setItem("@CART_LIST", JSON.stringify(cartList));
 
   return showCart ? (
     <StyledCart>

@@ -2,14 +2,13 @@ import { useContext } from "react";
 import { ProductsContext } from "../../context/ProductsContext";
 import { Button } from "../Button";
 import { StyledCartTotal } from "./style";
-import { decreaseStock, getProductById, getProducts } from "../../services/api";
+import { decreaseStock, getProductById } from "../../services/products";
 import { UserContext } from "../../context/UserContext";
+import { removeItemCart } from "../../services/cart";
 
 export const CartTotal = () => {
-  const { cartList, setCartList, setShowCart, setProducts } =
-    useContext(ProductsContext);
-  const { reloadRender, setReloadRender, setLoadUser } =
-    useContext(UserContext);
+  const { cartList, setCartList, setShowCart } = useContext(ProductsContext);
+  const { reloadRender, setReloadRender } = useContext(UserContext);
   const cartSum = cartList.reduce(
     (acc, current) => acc + current.value * current.quantity,
     0
@@ -20,11 +19,15 @@ export const CartTotal = () => {
   });
 
   const cleanCart = () => {
+    cartList.map(async (item) => {
+      await removeItemCart(item.cart_id);
+    });
+
     setCartList([]);
     setShowCart(false);
   };
 
-  const fechaPedido = async () => {
+  const closeOrder = async () => {
     await Promise.all(
       cartList.map(async (item) => {
         const getProduct = await getProductById(item.id);
@@ -32,8 +35,7 @@ export const CartTotal = () => {
         await decreaseStock(item.id, newStock);
       })
     );
-    setCartList([]);
-    setShowCart(false);
+    cleanCart();
     setReloadRender(!reloadRender);
   };
 
@@ -52,7 +54,7 @@ export const CartTotal = () => {
         />
         <Button
           size="medium"
-          onClick={async () => await fechaPedido()}
+          onClick={async () => await closeOrder()}
           content="Finalizar Pedido"
           color={"primary"}
         />
