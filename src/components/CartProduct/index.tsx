@@ -6,13 +6,10 @@ import { removeItemCart, updateQuantitiesCart } from "../../services/cart";
 import * as i from "../../interfaces/ProductsInterfaces";
 import { UserContext } from "../../context/UserContext";
 
-// export const CartProduct = ({ cartItem }: i.CartList) => {
-export const CartProduct = ({ cartItem }: any) => {
-  const { cartId } = useContext(ProductsContext);
-  const { cartList, setCartList } = useContext(UserContext);
-
-  const { id, quantities, product } = cartItem;
-  const { stock, image_product, name } = product;
+export const CartProduct = ({ cartItem }: i.CartList) => {
+  const { cartList, setCartList, cartId } = useContext(ProductsContext);
+  const { userId } = useContext(UserContext);
+  const { id, name, image_product, quantity, stock } = cartItem;
 
   const removeItem = async () => {
     console.log(cartItem);
@@ -32,7 +29,7 @@ export const CartProduct = ({ cartItem }: any) => {
       }
     });
     const updateList = cartList.map((item) => item);
-    // setCartList(updateList);
+    setCartList(updateList);
   };
 
   const subItem = () => {
@@ -43,7 +40,7 @@ export const CartProduct = ({ cartItem }: any) => {
       }
     });
     const updateList = cartList.map((item) => item);
-    // setCartList(updateList);
+    setCartList(updateList);
   };
 
   return (
@@ -55,7 +52,7 @@ export const CartProduct = ({ cartItem }: any) => {
         <h4 className="font-heading-4">{name}</h4>
         <div>
           <button onClick={() => subItem()}>-</button>
-          <span>{quantities}</span>
+          <span>{quantity}</span>
           <button onClick={() => addItem()}>+</button>
         </div>
       </div>

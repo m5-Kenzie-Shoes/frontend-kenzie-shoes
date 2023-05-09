@@ -1,6 +1,6 @@
 import { createContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { createUser, loginUser } from "../services/api";
+import { createUser, loginUser } from "../services/users";
 import * as i from "../interfaces/UserInterfaces";
 
 export const UserContext = createContext({} as i.UserContext);
