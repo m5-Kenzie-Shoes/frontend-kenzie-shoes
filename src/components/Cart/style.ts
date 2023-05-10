@@ -8,6 +8,10 @@ export const StyledCart = styled.aside`
     border-radius: var(--border-radius-2);
     z-index: 5;
 
+    top: 0;
+    right: 0;
+    position: absolute;
+
     > div:first-child {
       display: flex;
       align-items: center;

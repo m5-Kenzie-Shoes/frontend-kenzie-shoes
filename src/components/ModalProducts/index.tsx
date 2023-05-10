@@ -1,7 +1,6 @@
 import { StyledProfile } from "./style";
 import { useContext } from "react";
 import { AnimSlideDown } from "../../animation";
-import { UserContext } from "../../context/UserContext";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { ModalSchema } from "../../components/Modals/modalSchema";
