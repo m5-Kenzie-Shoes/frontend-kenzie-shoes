@@ -70,5 +70,5 @@ export interface UpdateDataUser {
   password: string;
   rePassword?: string;
   img: string;
-  address: DataAddress;
+  address?: DataAddress;
 }
