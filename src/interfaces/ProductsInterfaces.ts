@@ -3,6 +3,7 @@ export interface ProductsProvider {
 }
 
 export interface Products {
+  map(arg0: (product: any) => JSX.Element): unknown;
   id: number;
   name: string;
   category:
