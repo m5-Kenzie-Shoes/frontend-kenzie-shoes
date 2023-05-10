@@ -12,8 +12,6 @@ import { Button } from "../Button";
 export const Modal = () => {
   const { showProfileModal, setShowProfileModal, UserUpdateSubmit, user } =
     useContext(UserContext);
-  /* const user = await getUserById(userId!);
-  console.log(user); */
 
   const {
     register,

@@ -43,8 +43,33 @@ export const UserProvider = ({ children }: i.UserProvider) => {
   };
 
   const UserUpdateSubmit = async (data: i.UpdateDataUser) => {
+    let filteredData: any = {};
+    let filteredAddress: any = {};
+    let address: any = data.address;
+    let newData = delete data.address;
+
+    const keysAddress = Object.entries(address!);
+    keysAddress.map((key) => {
+      if (key[1] != "") {
+        const propriedade = key[0];
+        const valor = key[1];
+        filteredAddress[propriedade] = valor;
+      }
+    });
+
+    const keysData = Object.entries(newData);
+    keysData.map((key) => {
+      if (key[1] != "") {
+        const propriedade = key[0];
+        const valor = key[1];
+        filteredData[propriedade] = valor;
+      }
+    });
+
+    filteredData.address = filteredAddress;
+    console.log(filteredData);
+
     const response = await updateDataUser(data, userId!);
-    console.log(response);
   };
 
   const logout = () => {
