@@ -4,6 +4,10 @@ import { Hero } from "../../components/hero";
 import banner from "../../images/banner.png";
 import passo from "../../images/passoapasso.png";
 import { StyledLink } from "../../styles/link";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination } from "swiper";
+import "swiper/css/navigation";
+import "swiper/css";
 
 export const LandingPage = () => {
   return (
@@ -12,9 +16,24 @@ export const LandingPage = () => {
       <div className="container">
         <img className="imgBanneLP" src={banner} alt="bannerKenzieShoes" />
         <div className="cardReviewContainer">
-          <div className="cardReviewListContainer">
-            <CardReview />
-          </div>
+          {/* <div className="cardReviewListContainer"> */}
+          <Swiper
+            spaceBetween={30}
+            modules={[Navigation]}
+            navigation={true}
+            className="cardReviewListContainer"
+          >
+            <SwiperSlide>
+              <CardReview />
+            </SwiperSlide>
+            {/* <SwiperSlide>
+              <CardReview />
+            </SwiperSlide>
+            <SwiperSlide>
+              <CardReview />
+            </SwiperSlide> */}
+          </Swiper>
+          {/* </div> */}
         </div>
         <div className="buttonCenter">
           <StyledLink

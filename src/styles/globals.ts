@@ -161,6 +161,33 @@ export const StyledGlobals = createGlobalStyle`
     }
   }
 
+  /* swiper */
+
+  .swiper-pagination>.swiper-pagination-bullet{
+
+}
+
+.swiper-container{
+  width: fit-content;
+}
+
+.slide-item{
+  margin: 2rem;
+}
+
+.swiper-slide{
+  width: fit-content;
+}
+
+.swipe-slide-active{
+  width: fit-content;
+}
+
+.slide-item img{
+  width: fit-content;
+}
+
+
 ::-webkit-scrollbar-track { background-color: var(--color-gray-20) }
 ::-webkit-scrollbar { width: .4375rem; height: .4375rem;}
 ::-webkit-scrollbar-thumb { background: var(--color-primary-50); border-radius: var(--border-radius-1)}
