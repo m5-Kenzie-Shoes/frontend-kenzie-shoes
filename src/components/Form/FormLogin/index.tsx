@@ -49,7 +49,7 @@ export const FormLogin = () => {
       <Button content="Logar" size="default" color="primary" />
 
       <p className="font-body">
-        Crie sua conta para saborear muitas delícias e matar sua fome!
+        O segredo para um visual de sucesso começa nos pés. Crie já sua conta!
       </p>
       <Link to={"/register"}>
         <Button content="Cadastrar" size="default" color="gray" />
