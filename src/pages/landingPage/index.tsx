@@ -23,7 +23,7 @@ export const LandingPage = () => {
         <img className="imgBanneLP" src={banner} alt="bannerKenzieShoes" />
         <div className="cardReviewContainer">
           {/* <div className="cardReviewListContainer"> */}
-          <Swiper
+          {/* <Swiper
             modules={[Navigation, Pagination]}
             navigation={true}
             spaceBetween={32}
@@ -49,7 +49,7 @@ export const LandingPage = () => {
             <SwiperSlide>
               <CardReview />
             </SwiperSlide>
-          </Swiper>
+          </Swiper> */}
           {/* </div> */}
         </div>
         <div className="buttonCenter">

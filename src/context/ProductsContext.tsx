@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { getProducts } from "../services/products";
+import { createProduct, getProducts } from "../services/products";
 import { api } from "../services/api";
 import { UserContext } from "./UserContext";
 import * as i from "../interfaces/ProductsInterfaces";
@@ -18,6 +18,7 @@ export const ProductsProvider = ({ children }: i.ProductsProvider) => {
     []
   );
   const [showCart, setShowCart] = useState(false);
+  const [showProfileModal, setShowProfileModal] = useState(false);
 
   const { reloadRender, setLoadUser, setUser } = useContext(UserContext);
 
@@ -61,6 +62,12 @@ export const ProductsProvider = ({ children }: i.ProductsProvider) => {
     setFilteredProducts([]);
   };
 
+  const ProductsSubmit = async (data: i.Products) => {
+    const response = await createProduct(data);
+
+    response && navigate("/login");
+  };
+
   return (
     <ProductsContext.Provider
       value={{
@@ -77,6 +84,9 @@ export const ProductsProvider = ({ children }: i.ProductsProvider) => {
         setShowCart,
         cartId,
         setCartId,
+        ProductsSubmit,
+        showProfileModal,
+        setShowProfileModal,
       }}
     >
       {children}

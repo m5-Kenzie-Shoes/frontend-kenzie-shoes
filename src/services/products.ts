@@ -1,10 +1,35 @@
 import { AxiosError } from "axios";
 import { toast } from "react-toastify";
 import { api } from "./api";
+import * as i from "../interfaces/ProductsInterfaces";
+
+export const createProduct = async (body: i.Products) => {
+  try {
+    const { data, status } = await api.post("products/", body);
+
+    status === 201 && toast.success("Produto cadastrado com Sucesso!");
+
+    return data;
+  } catch (error) {
+    const message = error as AxiosError<any>;
+    console.log(message);
+    if (message.response?.data.username[0]) {
+      message.response?.data.username[0] ===
+        "user with this username already exists." &&
+        toast.error("Username já cadastrado!");
+    }
+    if (message.response?.data.email[0]) {
+      message.response?.data.email[0] === "This field must be unique." &&
+        toast.error("Email já cadastrado!");
+    }
+    return false;
+  }
+};
 
 export const getProducts = async () => {
   try {
     const { data } = await api.get("products/");
+    console.log(data);
 
     return data;
   } catch (error) {

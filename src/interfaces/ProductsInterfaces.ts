@@ -3,6 +3,7 @@ export interface ProductsProvider {
 }
 
 export interface Products {
+  map(arg0: (product: any) => JSX.Element): unknown;
   id: number;
   name: string;
   category:
@@ -59,4 +60,7 @@ export interface ProductsContext {
   setShowCart: React.Dispatch<React.SetStateAction<boolean>>;
   cartId: number | null;
   setCartId: React.Dispatch<React.SetStateAction<number | null>>;
+  ProductsSubmit: (data: Products) => void;
+  showProfileModal: boolean;
+  setShowProfileModal: React.Dispatch<React.SetStateAction<boolean>>;
 }

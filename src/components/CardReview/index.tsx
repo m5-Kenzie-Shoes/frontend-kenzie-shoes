@@ -1,7 +1,9 @@
 import homem from "../../images/homem-comum.jpg";
+import { getProducts } from "../../services/products";
 import { CardReviewStyled } from "./style";
+import * as i from "../../interfaces/ProductsInterfaces";
 
-export const CardReview = () => {
+export const CardReview = async (): Promise<any> => {
   return (
     <CardReviewStyled>
       <img src={homem} alt="" />
