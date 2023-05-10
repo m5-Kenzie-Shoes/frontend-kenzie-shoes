@@ -9,7 +9,7 @@ import { TbLogout } from "react-icons/tb";
 import { UserContext } from "../../context/UserContext";
 import { Button } from "../Button";
 import { transformToSeller } from "../../services/users";
-// import { ModalOrders } from "../modalChakra";
+import { ModalOrders } from "../modalChakra";
 
 
 export const Header = () => {
@@ -40,15 +40,17 @@ export const Header = () => {
           <InputSearch />
           <div>
             {userId && (
-              <div>
-                <button onClick={() => setShowCart(!showCart)}>
-                  <FaShoppingCart size={25} color={"var(--color-gray-50)"} />
-                </button>
-                <span>{cartList.length}</span>
-              </div>
+              <>
+                <ModalOrders />
+                <div>
+                  <button onClick={() => setShowCart(!showCart)}>
+                    <FaShoppingCart size={25} color={"var(--color-gray-50)"} />
+                  </button>
+                  <span>{cartList.length}</span>
+                </div>
+              </>
             )}
 
-            {/* <ModalOrders /> */}
             <button onClick={() => logout()}>
               <TbLogout size={30} color={"var(--color-gray-100)"} />
             </button>
