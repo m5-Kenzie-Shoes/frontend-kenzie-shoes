@@ -10,6 +10,7 @@ import { UserContext } from "../../context/UserContext";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper";
 import "swiper/css/navigation";
+import "swiper/css/pagination";
 import "swiper/css";
 
 export const LandingPage = () => {
@@ -23,20 +24,16 @@ export const LandingPage = () => {
         <div className="cardReviewContainer">
           {/* <div className="cardReviewListContainer"> */}
           <Swiper
-            spaceBetween={30}
-            modules={[Navigation]}
+            modules={[Navigation, Pagination]}
             navigation={true}
-            className="cardReviewListContainer"
+            spaceBetween={32}
+            slidesPerView={3}
+            pagination={{ clickable: true }}
+            // className="cardReviewContainer"
           >
             <SwiperSlide>
               <CardReview />
             </SwiperSlide>
-            {/* <SwiperSlide>
-              <CardReview />
-            </SwiperSlide>
-            <SwiperSlide>
-              <CardReview />
-            </SwiperSlide> */}
           </Swiper>
           {/* </div> */}
         </div>

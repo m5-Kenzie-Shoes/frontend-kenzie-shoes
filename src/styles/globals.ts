@@ -163,29 +163,19 @@ export const StyledGlobals = createGlobalStyle`
 
   /* swiper */
 
-  .swiper-pagination>.swiper-pagination-bullet{
-
-}
+ 
 
 .swiper-container{
   width: fit-content;
 }
 
-.slide-item{
-  margin: 2rem;
+
+.swiper-button-prev::after,.swiper-button-next::after{
+  color: white;
 }
 
-.swiper-slide{
-  width: fit-content;
-}
 
-.swipe-slide-active{
-  width: fit-content;
-}
 
-.slide-item img{
-  width: fit-content;
-}
 
 
 ::-webkit-scrollbar-track { background-color: var(--color-gray-20) }
