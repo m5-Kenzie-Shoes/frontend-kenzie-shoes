@@ -8,11 +8,16 @@ export const StyledProfile = styled.div`
   flex-direction: column;
   width: 100vw;
   height: 100vh;
+  padding: 0;
+  margin: 0;
   position: fixed;
   left: 0px;
   top: 0px;
+  background-color: #00000090;
+  z-index: 15;
 
   .divFormProfile {
+    overflow: hidden;
     display: flex;
     flex-direction: column;
     align-items: left;
