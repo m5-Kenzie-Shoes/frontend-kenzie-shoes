@@ -4,7 +4,6 @@ import { getProducts } from "../services/products";
 import { api } from "../services/api";
 import { UserContext } from "./UserContext";
 import * as i from "../interfaces/ProductsInterfaces";
-import { getUserById } from "../services/users";
 
 export const ProductsContext = createContext({} as i.ProductsContext);
 
@@ -23,6 +22,7 @@ export const ProductsProvider = ({ children }: i.ProductsProvider) => {
 
   useEffect(() => {
     const loadProducts = async () => {
+      setLoadUser(true);
       const token = localStorage.getItem("@TOKEN");
       const userId = localStorage.getItem("@USER_ID");
       if (token) {
@@ -31,6 +31,11 @@ export const ProductsProvider = ({ children }: i.ProductsProvider) => {
 
       const productsResponse = await getProducts();
 
+      if (productsResponse) {
+        setProducts(productsResponse);
+        navigate("/dashboard");
+      }
+
       if (userId) {
         const cartString = localStorage.getItem("@CART_LIST");
 
@@ -38,14 +43,9 @@ export const ProductsProvider = ({ children }: i.ProductsProvider) => {
           const cartJson = JSON.parse(cartString!);
           setCartList(cartJson);
         }
-      }
-
-      if (productsResponse) {
-        setProducts(productsResponse);
-        navigate("/");
       } else {
         localStorage.clear();
-        navigate("/login");
+        navigate("/");
       }
       setLoadUser(false);
     };

@@ -13,12 +13,13 @@ import { transformToSeller } from "../../services/users";
 export const Header = () => {
   const { logout } = useContext(UserContext);
   const { cartList, showCart, setShowCart } = useContext(ProductsContext);
-  const { showProfileModal, setShowProfileModal } = useContext(UserContext);
+  const { setShowProfileModal } = useContext(UserContext);
   const userId = localStorage.getItem("@USER_ID");
 
   const userSell = async () => {
     await transformToSeller(Number(userId!));
   };
+  // console.log(userId);
 
   return (
     <StyledHeader>
@@ -35,18 +36,22 @@ export const Header = () => {
           )}
           <InputSearch />
           <div>
-            <div>
-              <button onClick={() => setShowCart(!showCart)}>
-                <FaShoppingCart size={25} color={"var(--color-gray-50)"} />
-              </button>
-              <span>{cartList.length}</span>
-            </div>
+            {userId && (
+              <div>
+                <button onClick={() => setShowCart(!showCart)}>
+                  <FaShoppingCart size={25} color={"var(--color-gray-50)"} />
+                </button>
+                <span>{cartList.length}</span>
+              </div>
+            )}
             <button onClick={() => logout()}>
               <TbLogout size={30} color={"var(--color-gray-100)"} />
             </button>
-            <button onClick={() => setShowProfileModal(true)}>
-              <img className="userImg" src={userImg} alt="" />
-            </button>
+            {userId && (
+              <button onClick={() => setShowProfileModal(true)}>
+                <img className="userImg" src={userImg} alt="" />
+              </button>
+            )}
           </div>
         </div>
       </div>

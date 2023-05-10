@@ -1,5 +1,4 @@
 import { StyledProfile } from "./style";
-import editIcon from "../../images/edit.png";
 import { useContext } from "react";
 import { AnimSlideDown } from "../../animation";
 import { UserContext } from "../../context/UserContext";
@@ -9,11 +8,13 @@ import { ModalSchema } from "../../components/Modals/modalSchema";
 import * as i from "../../interfaces/UserInterfaces";
 import { Input } from "../Input";
 import { Button } from "../Button";
+import { getUserById } from "../../services/users";
 
 export const Modal = () => {
-  const { showProfileModal, setShowProfileModal } = useContext(UserContext);
-  const { UserUpdateSubmit } = useContext(UserContext);
-  const { closeModal, setCloseModal } = useContext(UserContext);
+  const { showProfileModal, setShowProfileModal, UserUpdateSubmit, userId } =
+    useContext(UserContext);
+  /* const user = await getUserById(userId!);
+  console.log(user); */
 
   const {
     register,
@@ -78,12 +79,12 @@ export const Modal = () => {
                 register={register("address.number")}
                 error={errors.address?.number?.message}
               />
-              <Input
+              {/* <Input
                 type="text"
                 name="Complemento"
                 register={register("address.add_on")}
                 error={errors.address?.add_on?.message}
-              />
+              /> */}
               <Input
                 type="text"
                 name="Cidade"

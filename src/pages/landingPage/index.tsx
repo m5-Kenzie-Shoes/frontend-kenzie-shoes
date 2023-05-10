@@ -1,12 +1,17 @@
+import { useContext } from "react";
 import { CardReview } from "../../components/CardReview";
+import { Loader } from "../../components/Loader";
 import { Footer } from "../../components/footer";
 import { Hero } from "../../components/hero";
 import banner from "../../images/banner.png";
 import passo from "../../images/passoapasso.png";
 import { StyledLink } from "../../styles/link";
+import { UserContext } from "../../context/UserContext";
 
 export const LandingPage = () => {
-  return (
+  const { loadUser } = useContext(UserContext);
+
+  return !loadUser ? (
     <>
       <Hero />
       <div className="container">
@@ -40,6 +45,10 @@ export const LandingPage = () => {
         </div>
       </div>
       <Footer />
+    </>
+  ) : (
+    <>
+      <Loader />
     </>
   );
 };

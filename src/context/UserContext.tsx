@@ -28,8 +28,8 @@ export const UserProvider = ({ children }: i.UserProvider) => {
       setReloadRender(!reloadRender);
 
       setTimeout(() => {
-        navigate("/");
-      }, 2000);
+        navigate("/dashboard");
+      }, 1000);
     } else {
       localStorage.clear();
     }
@@ -42,19 +42,19 @@ export const UserProvider = ({ children }: i.UserProvider) => {
   };
 
   const UserUpdateSubmit = async (data: i.UpdateDataUser) => {
-    console.log(data)
     const response = await updateDataUser(data, userId!);
     console.log(response);
   };
 
   const logout = () => {
     localStorage.clear();
-    navigate("/login");
+    navigate("/");
   };
 
   return (
     <UserContext.Provider
       value={{
+        userId,
         reloadRender,
         setReloadRender,
         loadUser,
