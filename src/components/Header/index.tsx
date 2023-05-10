@@ -11,6 +11,7 @@ import { Button } from "../Button";
 import { transformToSeller } from "../../services/users";
 import { ModalOrders } from "../modalChakra";
 
+
 export const Header = () => {
   const { logout } = useContext(UserContext);
   const { cartList, showCart, setShowCart, setShowAddProducts } =

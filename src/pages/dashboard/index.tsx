@@ -18,6 +18,7 @@ export const DashboardPage = () => {
     <>
       <ModalProducts />
       <Modal />
+      <ModalProducts />
       <Header />
       <AnimSlideDown>
         <StyledDashboard>
