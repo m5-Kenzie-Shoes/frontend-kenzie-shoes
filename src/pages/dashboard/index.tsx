@@ -8,6 +8,7 @@ import { ProductsContext } from "../../context/ProductsContext";
 import { UserContext } from "../../context/UserContext";
 import { StyledDashboard } from "./style";
 import { Modal } from "../../components/Modals";
+import { ModalProducts } from "../../components/ModalProducts";
 
 export const DashboardPage = () => {
   const { loadUser } = useContext(UserContext);
@@ -16,6 +17,7 @@ export const DashboardPage = () => {
   return !loadUser ? (
     <>
       <Modal />
+      <ModalProducts />
       <Header />
       <AnimSlideDown>
         <StyledDashboard>
