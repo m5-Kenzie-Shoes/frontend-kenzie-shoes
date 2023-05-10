@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const StyledHeader = styled.header`
   background-color: var(--color-gray-0);
-  height: 6rem;
+  height: 5rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -13,14 +13,14 @@ export const StyledHeader = styled.header`
   width: 100%;
 
   .newLogo {
-    width: 190px;
-    margin-top: 50px;
+    width: 140px;
+    margin-top: 40px;
   }
 
   .userImg {
     border-radius: 100%;
-    height: 50px;
-    width: 50px;
+    height: 45px;
+    width: 45px;
     overflow: hidden;
     cursor: pointer;
     border: none;
@@ -38,6 +38,15 @@ export const StyledHeader = styled.header`
       align-items: center;
       justify-content: center;
       gap: 35px;
+
+      > form {
+        height: 45px;
+        > button {
+          padding: 0;
+          width: 45px;
+          height: 33px;
+        }
+      }
 
       > div {
         display: flex;

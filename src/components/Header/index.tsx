@@ -1,5 +1,5 @@
 import logo from "../../images/logo.png";
-import userImg from "../../images/eowyn.jpg";
+import userImg from "../../images/perfil.png";
 import { useContext } from "react";
 import { ProductsContext } from "../../context/ProductsContext";
 import { InputSearch } from "../InputSearch";
@@ -13,12 +13,13 @@ import { transformToSeller } from "../../services/users";
 export const Header = () => {
   const { logout } = useContext(UserContext);
   const { cartList, showCart, setShowCart } = useContext(ProductsContext);
-  const { showProfileModal, setShowProfileModal } = useContext(UserContext);
+  const { user, setShowProfileModal } = useContext(UserContext);
   const userId = localStorage.getItem("@USER_ID");
 
   const userSell = async () => {
     await transformToSeller(Number(userId!));
   };
+  // console.log(user);
 
   return (
     <StyledHeader>
@@ -30,23 +31,31 @@ export const Header = () => {
               onClick={() => userSell()}
               size="medium"
               color="gray"
-              content={"VENDA AQUI"}
+              content={"VENDER"}
             />
           )}
           <InputSearch />
           <div>
-            <div>
-              <button onClick={() => setShowCart(!showCart)}>
-                <FaShoppingCart size={25} color={"var(--color-gray-50)"} />
-              </button>
-              <span>{cartList.length}</span>
-            </div>
+            {userId && (
+              <div>
+                <button onClick={() => setShowCart(!showCart)}>
+                  <FaShoppingCart size={25} color={"var(--color-gray-50)"} />
+                </button>
+                <span>{cartList.length}</span>
+              </div>
+            )}
             <button onClick={() => logout()}>
               <TbLogout size={30} color={"var(--color-gray-100)"} />
             </button>
-            <button onClick={() => setShowProfileModal(true)}>
-              <img className="userImg" src={userImg} alt="" />
-            </button>
+            {userId && (
+              <button onClick={() => setShowProfileModal(true)}>
+                <img
+                  className="userImg"
+                  src={user!.image_user ? user!.image_user : userImg}
+                  alt=""
+                />
+              </button>
+            )}
           </div>
         </div>
       </div>

@@ -90,3 +90,16 @@ export const updateDataUser = async (
     return false;
   }
 };
+
+export const createOrder = async () => {
+  try {
+    const { data, status } = await api.post(`users/orders/`);
+    status === 200 && toast.success("Ordem realizada com sucesso!");
+    return data;
+  } catch (error) {
+    const message = error as AxiosError<any>;
+    message.response?.data.detail == "Produto indisponível" &&
+      toast.error(message.response?.data.detail);
+    return false;
+  }
+};

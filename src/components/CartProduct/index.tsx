@@ -16,7 +16,7 @@ export const CartProduct = ({ cartItem }: i.CartList) => {
     await removeItemCart(selectedItem[0].cart_id);
     const updatedList = cartList.filter((item) => item.id != cartItem.id);
     setCartList(updatedList);
-    setReloadRender(!reloadRender);
+    // setReloadRender(!reloadRender);
   };
 
   const addItem = () => {

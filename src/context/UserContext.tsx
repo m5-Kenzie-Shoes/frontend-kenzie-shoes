@@ -13,6 +13,7 @@ export const UserProvider = ({ children }: i.UserProvider) => {
   const [showProfileModal, setShowProfileModal] = useState(false);
   const [closeModal, setCloseModal] = useState(false);
   const [userId, setUserId] = useState(null);
+  const [user, setUser] = useState<i.userResponse | null>(null);
 
   const loginSubmit = async (data: i.DataLogin) => {
     const response = await loginUser(data);
@@ -28,8 +29,8 @@ export const UserProvider = ({ children }: i.UserProvider) => {
       setReloadRender(!reloadRender);
 
       setTimeout(() => {
-        navigate("/");
-      }, 2000);
+        navigate("/dashboard");
+      }, 1000);
     } else {
       localStorage.clear();
     }
@@ -42,19 +43,21 @@ export const UserProvider = ({ children }: i.UserProvider) => {
   };
 
   const UserUpdateSubmit = async (data: i.UpdateDataUser) => {
-    console.log(data)
     const response = await updateDataUser(data, userId!);
     console.log(response);
   };
 
   const logout = () => {
     localStorage.clear();
-    navigate("/login");
+    navigate("/");
   };
 
   return (
     <UserContext.Provider
       value={{
+        user,
+        setUser,
+        userId,
         reloadRender,
         setReloadRender,
         loadUser,
