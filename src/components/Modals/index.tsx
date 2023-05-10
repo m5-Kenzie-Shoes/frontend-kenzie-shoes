@@ -1,5 +1,4 @@
 import { StyledProfile } from "./style";
-import editIcon from "../../images/edit.png";
 import { useContext } from "react";
 import { AnimSlideDown } from "../../animation";
 import { UserContext } from "../../context/UserContext";
@@ -11,9 +10,10 @@ import { Input } from "../Input";
 import { Button } from "../Button";
 
 export const Modal = () => {
-  const { showProfileModal, setShowProfileModal } = useContext(UserContext);
-  const { UserUpdateSubmit } = useContext(UserContext);
-  const { closeModal, setCloseModal } = useContext(UserContext);
+  const { showProfileModal, setShowProfileModal, UserUpdateSubmit, user } =
+    useContext(UserContext);
+  /* const user = await getUserById(userId!);
+  console.log(user); */
 
   const {
     register,
@@ -43,67 +43,72 @@ export const Modal = () => {
             onSubmit={handleSubmit(UserUpdateSubmit)}
             noValidate
           >
-            <div className="inputs">
-              <h4>Dados pessoais</h4>
-              <Input
-                type="text"
-                name="Foto Perfil"
-                register={register("img")}
-                error={errors.img?.message}
-              />
-              <Input
-                type="password"
-                name="Senha"
-                register={register("password")}
-                error={errors.password?.message}
-              />
-              <Input
-                type="password"
-                name="Confirmar Senha"
-                register={register("rePassword")}
-                error={errors.rePassword?.message}
-              />
+            <div>
+              <div className="inputs">
+                <div>
+                  <h4>Dados pessoais</h4>
+                  <h5>Username: {user?.username} </h5>
+                  <h5>
+                    Nome: {user?.first_name} {user?.last_name}
+                  </h5>
+                  <h5>E-mail: {user?.email} </h5>
+                </div>
+                <div>
+                  <Input
+                    type="text"
+                    name="Foto Perfil"
+                    register={register("img")}
+                    error={errors.img?.message}
+                  />
+                  <Input
+                    type="password"
+                    name="Senha"
+                    register={register("password")}
+                    error={errors.password?.message}
+                  />
+                  <Input
+                    type="password"
+                    name="Confirmar Senha"
+                    register={register("rePassword")}
+                    error={errors.rePassword?.message}
+                  />
+                </div>
+              </div>
+              <div className="inputs">
+                <h4>Endereço</h4>
+                <Input
+                  type="text"
+                  name="Rua"
+                  register={register("address.street")}
+                  error={errors.address?.street?.message}
+                />
+                <Input
+                  type="text"
+                  name="Numero"
+                  register={register("address.number")}
+                  error={errors.address?.number?.message}
+                />
+                <Input
+                  type="text"
+                  name="Cidade"
+                  register={register("address.city")}
+                  error={errors.address?.city?.message}
+                />
+                <Input
+                  type="text"
+                  name="Estado"
+                  register={register("address.state")}
+                  error={errors.address?.state?.message}
+                />
+                <Input
+                  type="text"
+                  name="Cep"
+                  register={register("address.zipcode")}
+                  error={errors.address?.zipcode?.message}
+                />
+              </div>
             </div>
-            <div className="inputs">
-              <h4>Endereço</h4>
-              <Input
-                type="text"
-                name="Rua"
-                register={register("address.street")}
-                error={errors.address?.street?.message}
-              />
-              <Input
-                type="text"
-                name="Numero"
-                register={register("address.number")}
-                error={errors.address?.number?.message}
-              />
-              <Input
-                type="text"
-                name="Complemento"
-                register={register("address.add_on")}
-                error={errors.address?.add_on?.message}
-              />
-              <Input
-                type="text"
-                name="Cidade"
-                register={register("address.city")}
-                error={errors.address?.city?.message}
-              />
-              <Input
-                type="text"
-                name="Estado"
-                register={register("address.state")}
-                error={errors.address?.state?.message}
-              />
-              <Input
-                type="text"
-                name="Cep"
-                register={register("address.zipcode")}
-                error={errors.address?.zipcode?.message}
-              />
-              <Button content="Atualizar" size="default" color="gray" />
-            </div>
+            <Button content="Atualizar" size="default" color="gray" />
           </form>
         </div>
       </AnimSlideDown>

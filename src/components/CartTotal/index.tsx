@@ -2,13 +2,15 @@ import { useContext } from "react";
 import { ProductsContext } from "../../context/ProductsContext";
 import { Button } from "../Button";
 import { StyledCartTotal } from "./style";
-import { decreaseStock, getProductById } from "../../services/products";
 import { UserContext } from "../../context/UserContext";
 import { removeItemCart } from "../../services/cart";
+import { createOrder } from "../../services/users";
+import { toast } from "react-toastify";
 
 export const CartTotal = () => {
   const { cartList, setCartList, setShowCart } = useContext(ProductsContext);
-  const { reloadRender, setReloadRender } = useContext(UserContext);
+  const { reloadRender, setReloadRender, loadUser, setLoadUser } =
+    useContext(UserContext);
   const cartSum = cartList.reduce(
     (acc, current) => acc + current.value * current.quantity,
     0
@@ -18,25 +20,26 @@ export const CartTotal = () => {
     currency: "BRL",
   });
 
-  const cleanCart = () => {
-    cartList.map(async (item) => {
-      await removeItemCart(item.cart_id);
-    });
+  const clearCart = () => {
+    console.log(cartList);
+    cartList &&
+      cartList.map(async (item) => {
+        await removeItemCart(item.cart_id);
+      });
 
     setCartList([]);
     setShowCart(false);
   };
 
   const closeOrder = async () => {
-    await Promise.all(
-      cartList.map(async (item) => {
-        const getProduct = await getProductById(item.id);
-        const newStock = getProduct.stock - item.quantity;
-        await decreaseStock(item.id, newStock);
-      })
-    );
-    cleanCart();
+    setLoadUser(true);
+    await createOrder();
+
+    setCartList([]);
+    setShowCart(false);
     setReloadRender(!reloadRender);
+    setLoadUser(false);
+    toast.success("Pedido realizado com sucesso!");
   };
 
   return (
@@ -50,7 +53,7 @@ export const CartTotal = () => {
           size="medium"
           color="gray"
           content="Remover Todos"
-          onClick={() => cleanCart()}
+          onClick={() => clearCart()}
         />
         <Button
           size="medium"

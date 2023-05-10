@@ -10,12 +10,14 @@ export const StyledHero = styled.div`
       display: flex;
       width: 100vw;
       max-width: 100%;
-      height: 5rem;
+      height: 6rem;
       align-items: center;
       display: flex;
       img {
         width: 129px;
         height: 86px;
+        position: absolute;
+        top: 23px;
       }
       div {
         display: flex;
