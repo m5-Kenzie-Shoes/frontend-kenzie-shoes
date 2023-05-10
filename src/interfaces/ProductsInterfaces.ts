@@ -60,4 +60,7 @@ export interface ProductsContext {
   setShowCart: React.Dispatch<React.SetStateAction<boolean>>;
   cartId: number | null;
   setCartId: React.Dispatch<React.SetStateAction<number | null>>;
+  ProductsSubmit: (data: Products) => void;
+  showProfileModal: boolean;
+  setShowProfileModal: React.Dispatch<React.SetStateAction<boolean>>;
 }
