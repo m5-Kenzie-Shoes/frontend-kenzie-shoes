@@ -19,8 +19,10 @@ export const ProductsProvider = ({ children }: i.ProductsProvider) => {
   );
   const [showCart, setShowCart] = useState(false);
   const [showProfileModal, setShowProfileModal] = useState(false);
+  const [showAddProducts, setShowAddProducts] = useState(false);
 
-  const { reloadRender, setLoadUser, setUser } = useContext(UserContext);
+  const { setReloadRender, reloadRender, setLoadUser, setUser } =
+    useContext(UserContext);
 
   useEffect(() => {
     const loadProducts = async () => {
@@ -63,9 +65,9 @@ export const ProductsProvider = ({ children }: i.ProductsProvider) => {
   };
 
   const ProductsSubmit = async (data: i.Products) => {
-    const response = await createProduct(data);
-
-    response && navigate("/login");
+    await createProduct(data);
+    setShowAddProducts(false);
+    setReloadRender(!reloadRender);
   };
 
   return (
@@ -87,6 +89,8 @@ export const ProductsProvider = ({ children }: i.ProductsProvider) => {
         ProductsSubmit,
         showProfileModal,
         setShowProfileModal,
+        showAddProducts,
+        setShowAddProducts,
       }}
     >
       {children}

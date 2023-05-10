@@ -22,14 +22,12 @@ export const LandingPage = () => {
       <div className="container">
         <img className="imgBanneLP" src={banner} alt="bannerKenzieShoes" />
         <div className="cardReviewContainer">
-          {/* <div className="cardReviewListContainer"> */}
-          {/* <Swiper
+          <Swiper
             modules={[Navigation, Pagination]}
             navigation={true}
             spaceBetween={32}
             slidesPerView={3}
             pagination={{ clickable: true }}
-            // className="cardReviewContainer"
           >
             <SwiperSlide>
               <CardReview />
@@ -43,15 +41,9 @@ export const LandingPage = () => {
             <SwiperSlide>
               <CardReview />
             </SwiperSlide>
-            <SwiperSlide>
-              <CardReview />
-            </SwiperSlide>
-            <SwiperSlide>
-              <CardReview />
-            </SwiperSlide>
-          </Swiper> */}
-          {/* </div> */}
+          </Swiper>
         </div>
+
         <div className="buttonCenter">
           <StyledLink
             className="buttonCenter"

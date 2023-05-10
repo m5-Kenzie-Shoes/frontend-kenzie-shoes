@@ -9,21 +9,19 @@ import { TbLogout } from "react-icons/tb";
 import { UserContext } from "../../context/UserContext";
 import { Button } from "../Button";
 import { transformToSeller } from "../../services/users";
-
-import { useDisclosure } from "@chakra-ui/react";
 import { ModalOrders } from "../modalChakra";
 
 export const Header = () => {
   const { logout } = useContext(UserContext);
-  const { cartList, showCart, setShowCart } = useContext(ProductsContext);
+  const { cartList, showCart, setShowCart, setShowAddProducts } =
+    useContext(ProductsContext);
   const { user, setShowProfileModal } = useContext(UserContext);
   const userId = localStorage.getItem("@USER_ID");
-  const { isOpen, onOpen, onClose } = useDisclosure();
 
   const userSell = async () => {
     await transformToSeller(Number(userId!));
+    setShowAddProducts(true);
   };
-  // console.log(user);
 
   return (
     <StyledHeader>

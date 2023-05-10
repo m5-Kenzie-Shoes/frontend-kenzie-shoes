@@ -63,4 +63,6 @@ export interface ProductsContext {
   ProductsSubmit: (data: Products) => void;
   showProfileModal: boolean;
   setShowProfileModal: React.Dispatch<React.SetStateAction<boolean>>;
+  showAddProducts: boolean;
+  setShowAddProducts: React.Dispatch<React.SetStateAction<boolean>>;
 }

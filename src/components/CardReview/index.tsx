@@ -1,9 +1,7 @@
-import homem from "../../images/homem-comum.jpg";
-import { getProducts } from "../../services/products";
+import homem from "../../images/sapatos-masculinos.jpg";
 import { CardReviewStyled } from "./style";
-import * as i from "../../interfaces/ProductsInterfaces";
 
-export const CardReview = async (): Promise<any> => {
+export const CardReview = () => {
   return (
     <CardReviewStyled>
       <img src={homem} alt="" />

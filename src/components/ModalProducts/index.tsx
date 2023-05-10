@@ -11,10 +11,8 @@ import { Button } from "../Button";
 import { ProductsContext } from "../../context/ProductsContext";
 
 export const ModalProducts = () => {
-  const { showProfileModal, setShowProfileModal, ProductsSubmit, products } =
+  const { showAddProducts, setShowAddProducts, ProductsSubmit } =
     useContext(ProductsContext);
-  /* const user = await getUserById(userId!);
-  console.log(user); */
 
   const {
     register,
@@ -25,7 +23,7 @@ export const ModalProducts = () => {
     resolver: yupResolver(ModalSchema),
   });
 
-  return showProfileModal ? (
+  return showAddProducts ? (
     <StyledProfile>
       <AnimSlideDown>
         <div className="divFormProfile">
@@ -33,7 +31,7 @@ export const ModalProducts = () => {
             <h3>Cadastrar Produto</h3>
             <button
               className="buttonX"
-              onClick={() => setShowProfileModal(false)}
+              onClick={() => setShowAddProducts(false)}
             >
               X
             </button>
@@ -86,7 +84,7 @@ export const ModalProducts = () => {
                 </div>
               </div>
             </div>
-            <Button content="Atualizar" size="default" color="gray" />
+            <Button content="Vender Produto!" size="default" color="gray" />
           </form>
         </div>
       </AnimSlideDown>

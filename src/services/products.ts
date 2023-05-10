@@ -13,15 +13,6 @@ export const createProduct = async (body: i.Products) => {
   } catch (error) {
     const message = error as AxiosError<any>;
     console.log(message);
-    if (message.response?.data.username[0]) {
-      message.response?.data.username[0] ===
-        "user with this username already exists." &&
-        toast.error("Username já cadastrado!");
-    }
-    if (message.response?.data.email[0]) {
-      message.response?.data.email[0] === "This field must be unique." &&
-        toast.error("Email já cadastrado!");
-    }
     return false;
   }
 };
@@ -29,7 +20,6 @@ export const createProduct = async (body: i.Products) => {
 export const getProducts = async () => {
   try {
     const { data } = await api.get("products/");
-    console.log(data);
 
     return data;
   } catch (error) {
@@ -45,7 +35,6 @@ export const getProducts = async () => {
 export const getProductById = async (product_id: number) => {
   try {
     const { data } = await api.get(`products/${product_id}`);
-    // console.log(data);
     return data;
   } catch (error) {
     const message = error as AxiosError<string>;
