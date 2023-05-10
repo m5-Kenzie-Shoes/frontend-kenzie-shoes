@@ -34,6 +34,21 @@ export const LandingPage = () => {
             <SwiperSlide>
               <CardReview />
             </SwiperSlide>
+            <SwiperSlide>
+              <CardReview />
+            </SwiperSlide>
+            <SwiperSlide>
+              <CardReview />
+            </SwiperSlide>
+            <SwiperSlide>
+              <CardReview />
+            </SwiperSlide>
+            <SwiperSlide>
+              <CardReview />
+            </SwiperSlide>
+            <SwiperSlide>
+              <CardReview />
+            </SwiperSlide>
           </Swiper>
           {/* </div> */}
         </div>

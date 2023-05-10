@@ -21,7 +21,7 @@ export const Products = ({ products }: i.ProductList) => {
   const addProduct = async () => {
     const token = localStorage.getItem("@TOKEN");
     if (!token) {
-      toast.error("Faça Login para efetuar compras!");
+      toast.error("É preciso estar logado para comprar ou vender!");
       navigate("/login");
       return;
     }

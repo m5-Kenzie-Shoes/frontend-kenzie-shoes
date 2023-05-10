@@ -4,6 +4,7 @@ import { getProducts } from "../services/products";
 import { api } from "../services/api";
 import { UserContext } from "./UserContext";
 import * as i from "../interfaces/ProductsInterfaces";
+import { getUserById } from "../services/users";
 
 export const ProductsContext = createContext({} as i.ProductsContext);
 
@@ -18,7 +19,7 @@ export const ProductsProvider = ({ children }: i.ProductsProvider) => {
   );
   const [showCart, setShowCart] = useState(false);
 
-  const { reloadRender, setLoadUser } = useContext(UserContext);
+  const { reloadRender, setLoadUser, setUser } = useContext(UserContext);
 
   useEffect(() => {
     const loadProducts = async () => {
@@ -28,6 +29,8 @@ export const ProductsProvider = ({ children }: i.ProductsProvider) => {
       if (token) {
         api.defaults.headers.common.authorization = `Bearer ${token}`;
       }
+
+      setUser(await getUserById(Number(userId)));
 
       const productsResponse = await getProducts();
 

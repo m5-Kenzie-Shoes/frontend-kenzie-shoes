@@ -5,6 +5,7 @@ import { StyledCartTotal } from "./style";
 import { UserContext } from "../../context/UserContext";
 import { removeItemCart } from "../../services/cart";
 import { createOrder } from "../../services/users";
+import { toast } from "react-toastify";
 
 export const CartTotal = () => {
   const { cartList, setCartList, setShowCart } = useContext(ProductsContext);
@@ -20,6 +21,7 @@ export const CartTotal = () => {
   });
 
   const clearCart = () => {
+    console.log(cartList);
     cartList &&
       cartList.map(async (item) => {
         await removeItemCart(item.cart_id);
@@ -33,9 +35,11 @@ export const CartTotal = () => {
     setLoadUser(true);
     await createOrder();
 
-    clearCart();
+    setCartList([]);
+    setShowCart(false);
     setReloadRender(!reloadRender);
     setLoadUser(false);
+    toast.success("Pedido realizado com sucesso!");
   };
 
   return (

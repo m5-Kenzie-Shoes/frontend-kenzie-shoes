@@ -4,7 +4,9 @@ import { api } from "./api";
 
 export const fillCart = async (product_id: number) => {
   try {
-    const { data, status } = await api.post(`products/${product_id}/cart/`);
+    const { data, status } = await api.post(`products/${product_id}/cart/`, {
+      quantities: 1,
+    });
     // console.log(data);
     status === 201 && toast.success("Enviado para o carrinho!");
 

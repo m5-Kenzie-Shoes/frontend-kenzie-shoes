@@ -13,6 +13,7 @@ export const UserProvider = ({ children }: i.UserProvider) => {
   const [showProfileModal, setShowProfileModal] = useState(false);
   const [closeModal, setCloseModal] = useState(false);
   const [userId, setUserId] = useState(null);
+  const [user, setUser] = useState<i.userResponse | null>(null);
 
   const loginSubmit = async (data: i.DataLogin) => {
     const response = await loginUser(data);
@@ -54,6 +55,8 @@ export const UserProvider = ({ children }: i.UserProvider) => {
   return (
     <UserContext.Provider
       value={{
+        user,
+        setUser,
         userId,
         reloadRender,
         setReloadRender,

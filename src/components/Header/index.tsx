@@ -1,5 +1,5 @@
 import logo from "../../images/logo.png";
-import userImg from "../../images/eowyn.jpg";
+import userImg from "../../images/perfil.png";
 import { useContext } from "react";
 import { ProductsContext } from "../../context/ProductsContext";
 import { InputSearch } from "../InputSearch";
@@ -13,13 +13,13 @@ import { transformToSeller } from "../../services/users";
 export const Header = () => {
   const { logout } = useContext(UserContext);
   const { cartList, showCart, setShowCart } = useContext(ProductsContext);
-  const { setShowProfileModal } = useContext(UserContext);
+  const { user, setShowProfileModal } = useContext(UserContext);
   const userId = localStorage.getItem("@USER_ID");
 
   const userSell = async () => {
     await transformToSeller(Number(userId!));
   };
-  // console.log(userId);
+  // console.log(user);
 
   return (
     <StyledHeader>
@@ -31,7 +31,7 @@ export const Header = () => {
               onClick={() => userSell()}
               size="medium"
               color="gray"
-              content={"VENDA AQUI"}
+              content={"VENDER"}
             />
           )}
           <InputSearch />
@@ -49,7 +49,11 @@ export const Header = () => {
             </button>
             {userId && (
               <button onClick={() => setShowProfileModal(true)}>
-                <img className="userImg" src={userImg} alt="" />
+                <img
+                  className="userImg"
+                  src={user!.image_user ? user!.image_user : userImg}
+                  alt=""
+                />
               </button>
             )}
           </div>

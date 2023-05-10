@@ -2,13 +2,15 @@ export interface UserProvider {
   children: React.ReactNode;
 }
 
-interface User {
+/* interface User {
   id: string;
   name: string;
   email: string;
-}
+} */
 
 export interface UserContext {
+  user: userResponse | null;
+  setUser: React.Dispatch<React.SetStateAction<userResponse | null>>;
   userId: number | null;
   reloadRender: boolean;
   setReloadRender: React.Dispatch<React.SetStateAction<boolean>>;
@@ -48,6 +50,19 @@ export interface DataRegister {
   password: string;
   rePassword?: string;
   img: string;
+  address: DataAddress;
+}
+
+export interface userResponse {
+  id: number;
+  username: string;
+  first_name: string;
+  last_name: string;
+  email: string;
+  image_user: string;
+  is_Seller: boolean;
+  is_superuser: boolean;
+  user_cart: [];
   address: DataAddress;
 }
 
