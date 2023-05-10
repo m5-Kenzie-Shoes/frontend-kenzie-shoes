@@ -88,6 +88,7 @@ export const Modal = () => {
                   register={register("address.number")}
                   error={errors.address?.number?.message}
                 />
+
                 <Input
                   type="text"
                   name="Cidade"

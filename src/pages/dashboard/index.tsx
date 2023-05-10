@@ -15,6 +15,7 @@ export const DashboardPage = () => {
 
   return !loadUser ? (
     <>
+      <Modal />
       <Header />
       <AnimSlideDown>
         <StyledDashboard>
@@ -30,7 +31,6 @@ export const DashboardPage = () => {
             />
           )}
           <Cart />
-          <Modal />
         </StyledDashboard>
       </AnimSlideDown>
     </>
