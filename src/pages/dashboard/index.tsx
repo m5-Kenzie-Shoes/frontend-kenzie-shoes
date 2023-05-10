@@ -16,8 +16,8 @@ export const DashboardPage = () => {
 
   return !loadUser ? (
     <>
-      <Modal />
       <ModalProducts />
+      <Modal />
       <Header />
       <AnimSlideDown>
         <StyledDashboard>

@@ -9,7 +9,7 @@ import { TbLogout } from "react-icons/tb";
 import { UserContext } from "../../context/UserContext";
 import { Button } from "../Button";
 import { transformToSeller } from "../../services/users";
-import { ModalOrders } from "../modalChakra";
+// import { ModalOrders } from "../modalChakra";
 
 export const Header = () => {
   const { logout } = useContext(UserContext);
@@ -47,7 +47,7 @@ export const Header = () => {
               </div>
             )}
 
-            <ModalOrders />
+            {/* <ModalOrders /> */}
             <button onClick={() => logout()}>
               <TbLogout size={30} color={"var(--color-gray-100)"} />
             </button>
