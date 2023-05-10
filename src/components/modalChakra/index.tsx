@@ -27,10 +27,12 @@ export const ModalOrders = () => {
       <Modal isOpen={isOpen} onClose={onClose} variant={"no-border"}>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>Minhas ordens</ModalHeader>
+          <ModalHeader>Minhas ordens de Compra</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            <span>maria maria</span>
+            <p>90821 - maria@hotmail.com - 2 un. - Tênis Nike</p>
+            <p>90824 - joão2@hotmail.com - 1 un. - Tênis Puma</p>
+            <p>90826 - josé4@hotmail.com - 1 un. - Tênis Adidas</p>
           </ModalBody>
           <ModalFooter>
             <Button bg="#00a999" color={"white"} mr={3} onClick={onClose}>

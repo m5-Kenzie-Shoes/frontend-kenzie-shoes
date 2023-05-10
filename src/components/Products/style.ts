@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const StyledProducts = styled.li`
   min-width: 16rem;
   width: 16rem;
+  /* height: 550px; */
   background-color: var(--color-white);
   border: 0.125rem solid var(--color-gray-20);
   border-radius: var(--border-radius-2);
@@ -43,9 +44,17 @@ export const StyledProducts = styled.li`
       gap: 0.5rem;
       max-width: 200px;
       min-width: 200px;
-      height: 90px;
+      height: 120px;
+
       > p {
         font-size: 0.75rem;
+        height: 65px;
+        display: -webkit-box;
+        overflow: hidden;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;
+        max-height: 4.5em;
+        line-height: 1.5em;
       }
     }
     > div:last-child {
